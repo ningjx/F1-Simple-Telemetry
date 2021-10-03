@@ -34,7 +34,34 @@
             </StackPanel>
 
             <Image Name="img_cr" Source="/Resources/cr.png"></Image>
-            <Image Name="img_lb" Source="/Resources/lable.png"></Image>
+            <Image Name="img_lb" Source="/Resources/lable.png"/>
+            <Grid Width="220" Height="70" Margin="140,198,140,232">
+                <Border   Width="220" Height="70" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Center" CornerRadius="0,15,15,0">
+                    <DockPanel Name="content1">
+                        <DockPanel.RenderTransform>
+                            <TranslateTransform Y="0" />
+                        </DockPanel.RenderTransform>
+                        <TextBlock Text="1234567"   HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="75"></TextBlock>
+                    </DockPanel>
+                    <Border.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation From="0" To="-285" Duration="0:0:5"
+                                                             RepeatBehavior="Forever" Storyboard.TargetName="content1"
+                                                             Storyboard.TargetProperty="RenderTransform.X"></DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Border.Triggers>
+                </Border>
+            </Grid>
+            <Grid Width="180" Height="80" Margin="160,281,160,139">
+                <Label Name="lb_rpm" Content="00000" FontSize="42" HorizontalAlignment="Center" Foreground="White" FontFamily="微软雅黑" Margin="14,-10,14,10"></Label>
+            </Grid>
+            <Grid Width="170" Height="90" Margin="165,353,165,57">
+                <Label Name="lb_speed" Content="000" FontSize="75" HorizontalAlignment="Center" Foreground="White" FontFamily="微软雅黑" Margin="12,-14,16,14"></Label>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

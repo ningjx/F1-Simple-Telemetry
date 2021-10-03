@@ -40,16 +40,17 @@ namespace WpfApp1
         public void SetSpeed(float sp)
         {
             arc_speed.EndAngle = ((421 - 120) * (sp / 360.0)) + 120;
+            lb_speed.Content = sp.ToString("F0");
         }
 
         public void SetRPM(float rpm)
         {
-
+            lb_rpm.Content = rpm.ToString("F0");
         }
 
         public void SetDRS(bool drs)
         {
-            //dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
+            dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void SetGear(int gear)
