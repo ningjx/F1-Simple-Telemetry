@@ -51,6 +51,10 @@
                 </Path>
             </StackPanel>
 
+            <Grid Width="150" Height="80" HorizontalAlignment="Center" Margin="175,138,175,282">
+                <Label Name="lb_DRS" Content="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="微软雅黑" Margin="14,-10,14,10"></Label>
+            </Grid>
+            
             <Image Name="img_cr" Source="/Resources/cr.png"></Image>
             <Image Name="img_lb" Source="/Resources/lable.png"/>
             <Grid Width="180" Height="80" Margin="160,281,160,139">

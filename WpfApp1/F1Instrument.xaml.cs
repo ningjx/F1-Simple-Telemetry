@@ -59,6 +59,16 @@ namespace WpfApp1
             dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
         }
 
+        public void DRSEnable(bool enable)
+        {
+            lb_DRS.Foreground = enable ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.White);
+        }
+
+        public void DRSNegative(bool negative)
+        {
+            lb_DRS.Foreground = negative ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.White);
+        }
+
         public void SetGear(int gear)
         {
             if (gear < -1 || gear > 8)
