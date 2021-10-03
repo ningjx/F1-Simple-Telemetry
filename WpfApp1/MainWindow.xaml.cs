@@ -21,6 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int gear = 0;
         Timer Timer = new Timer(10);
         float a = 0, b = 0, c = 0, d = 0, e = 0;
 
@@ -33,6 +34,7 @@ namespace WpfApp1
             Timer.AutoReset = true;
             Timer.Start();
         }
+
         public delegate void RefleshUI();
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -57,8 +59,17 @@ namespace WpfApp1
             f1.Dispatcher.Invoke(new RefleshUI(setvalue));
         }
 
-        private void F1Instrument_Loaded(object sender, RoutedEventArgs e)
+        private void MainWindows_Keydown(object sender, KeyEventArgs e)
         {
+            //判断用户的按键是否为Alt+F4
+            if (e.KeyStates == Keyboard.GetKeyStates(Key.Left))
+            {
+                f1.SetGear(--gear);
+            }
+            if (e.KeyStates == Keyboard.GetKeyStates(Key.Right))
+            {
+                f1.SetGear(++gear);
+            }
 
         }
     }

@@ -7,6 +7,24 @@
              mc:Ignorable="d" Height="500" Width="500">
     <Grid Height="500"  Margin="0,0,0,0">
         <Grid Height="500" Width="500">
+            <Grid  Width="800" Margin="-150,172,-150,220" HorizontalAlignment="Center">
+                <Grid Name="gear_grid" Width="800" Margin="0,0,0,0" VerticalAlignment="Center">
+                    <Label Content="R" Name="lb_R" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"/>
+                    <Label Content="N" Name="lb_N" Margin="80,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="1" Name="lb_1" Margin="160,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="2" Name="lb_2" Margin="240,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="3" Name="lb_3" Margin="320,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="4" Name="lb_4" Margin="400,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="5" Name="lb_5" Margin="480,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="6" Name="lb_6" Margin="560,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="7" Name="lb_7" Margin="640,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="8" Name="lb_8" Margin="720,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                </Grid>
+            </Grid>
+            <local:Arc x:Name="gear_cover_cir" Width="800" Height="800" Rect="0,0,800,800" StartAngle="0" EndAngle="360" Stroke="Black" StrokeThickness="560" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
+
+
+
             <local:Arc x:Name="arc_speed" Width="394" Height="394" Rect="17,17,360,360" StartAngle="120" EndAngle="421" Stroke="Blue" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
             <local:Arc x:Name="arc_tr" Width="326" Height="326" Rect="24,24,278,278" StartAngle="128" EndAngle="307" Stroke="Green" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
             <local:Arc x:Name="arc_break" Width="326" Height="326" Rect="24,24,278,278" StartAngle="410" EndAngle="311" Stroke="Red" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
@@ -35,27 +53,6 @@
 
             <Image Name="img_cr" Source="/Resources/cr.png"></Image>
             <Image Name="img_lb" Source="/Resources/lable.png"/>
-            <Grid Width="220" Height="70" Margin="140,198,140,232">
-                <Border   Width="220" Height="70" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Center" CornerRadius="0,15,15,0">
-                    <DockPanel Name="content1">
-                        <DockPanel.RenderTransform>
-                            <TranslateTransform Y="0" />
-                        </DockPanel.RenderTransform>
-                        <TextBlock Text="1234567"   HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="75"></TextBlock>
-                    </DockPanel>
-                    <Border.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation From="0" To="-285" Duration="0:0:5"
-                                                             RepeatBehavior="Forever" Storyboard.TargetName="content1"
-                                                             Storyboard.TargetProperty="RenderTransform.X"></DoubleAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Border.Triggers>
-                </Border>
-            </Grid>
             <Grid Width="180" Height="80" Margin="160,281,160,139">
                 <Label Name="lb_rpm" Content="00000" FontSize="42" HorizontalAlignment="Center" Foreground="White" FontFamily="微软雅黑" Margin="14,-10,14,10"></Label>
             </Grid>
