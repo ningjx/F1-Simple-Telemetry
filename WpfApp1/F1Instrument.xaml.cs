@@ -23,6 +23,13 @@ namespace WpfApp1
     public partial class F1Instrument : UserControl
     {
         private int Gear;
+        private bool DRS_On = false;
+        private bool DRS_Nev = false;
+        private bool DRS_Ena = false;
+        private int RPM;
+        private int SPEED;
+
+
         public F1Instrument()
         {
             InitializeComponent();
@@ -43,30 +50,50 @@ namespace WpfApp1
             arc_break.EndAngle = 410 - ((410 - 311) * bre);
         }
 
-        public void SetSpeed(float sp)
+        public void SetSpeed(int sp)
         {
-            arc_speed.EndAngle = ((421 - 120) * (sp / 360.0)) + 120;
-            lb_speed.Content = sp.ToString("F0");
+            if (SPEED != sp)
+            {
+                arc_speed.EndAngle = ((421 - 120) * (sp / 360.0)) + 120;
+                lb_speed.Content = sp.ToString();
+                SPEED = sp;
+            }
         }
 
-        public void SetRPM(float rpm)
+        public void SetRPM(int rpm)
         {
-            lb_rpm.Content = rpm.ToString("F0");
+            if (RPM != rpm)
+            {
+                lb_rpm.Content = rpm.ToString();
+                RPM = rpm;
+            }
         }
 
         public void SetDRS(bool drs)
         {
-            dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
+            if (DRS_On != drs)
+            {
+                dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
+                DRS_On = drs;
+            }
         }
 
         public void DRSEnable(bool enable)
         {
-            lb_DRS.Foreground = enable ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.White);
+            if (DRS_Ena != enable)
+            {
+                lb_DRS.Foreground = enable ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.White);
+                DRS_Ena = enable;
+            }
         }
 
         public void DRSNegative(bool negative)
         {
-            lb_DRS.Foreground = negative ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.White);
+            if (DRS_Nev != negative)
+            {
+                lb_DRS.Foreground = negative ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.White);
+                DRS_Nev = negative;
+            }
         }
 
         public void SetGear(int gear)
