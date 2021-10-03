@@ -23,6 +23,8 @@ namespace WpfApp1
         public F1Instrument()
         {
             InitializeComponent();
+            //img_cr.Source = new BitmapImage(new Uri("/Resources/cr.png", UriKind.Relative));
+            //img_lb.Source = new BitmapImage(new Uri("/Resources/lable.png", UriKind.Relative));
         }
 
         public void SetThr(float thr)
@@ -37,7 +39,7 @@ namespace WpfApp1
 
         public void SetSpeed(float sp)
         {
-            arc_speed.EndAngle = sp + 120;
+            arc_speed.EndAngle = ((421 - 120) * (sp / 360.0)) + 120;
         }
 
         public void SetRPM(float rpm)
@@ -47,7 +49,7 @@ namespace WpfApp1
 
         public void SetDRS(bool drs)
         {
-            dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
+            //dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void SetGear(int gear)

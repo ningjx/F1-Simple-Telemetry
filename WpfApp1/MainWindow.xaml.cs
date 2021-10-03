@@ -21,15 +21,17 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        Timer Timer = new Timer(200);
+        Timer Timer = new Timer(10);
         float a = 0, b = 0, c = 0, d = 0, e = 0;
 
         public MainWindow()
         {
             InitializeComponent();
+            f1.img_cr.Source = new BitmapImage(new Uri("/Resources/cr.png", UriKind.Relative));
+            f1.img_lb.Source = new BitmapImage(new Uri("/Resources/lable.png", UriKind.Relative));
             Timer.Elapsed += Timer_Elapsed;
             Timer.AutoReset = true;
-            //Timer.Start();
+            Timer.Start();
         }
         public delegate void RefleshUI();
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -42,16 +44,20 @@ namespace WpfApp1
             f1.SetBreak(a);
             f1.SetThr(b);
             f1.SetSpeed(c);
-
-            a = a > 1 ? 0 : a + 0.1F;
-            b = b > 1 ? 0 : b + 0.1F;
-            c = c > 360 ? 0 : c + 10F;
+            
+            a = a > 1 ? 0 : a + 0.01F;
+            b = b > 1 ? 0 : b + 0.01F;
+            c = c > 360 ? 0 : c + 1F;
         }
 
         private void delegatedosomething()
         {
             f1.Dispatcher.Invoke(new RefleshUI(setvalue));
-            //  ellipse2.Dispatcher.Invoke(new RefleshUI(UIThreaddosomething), s);
+        }
+
+        private void F1Instrument_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
