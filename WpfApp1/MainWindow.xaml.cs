@@ -23,7 +23,7 @@ namespace WpfApp1
     {
         private int gear = 0;
         Timer Timer = new Timer(10);
-        float a = 0, b = 0, c = 0, d = 0, e = 0;
+        float a = 0, b = 0; int c = 0, d = 0, e = 0;
 
         public MainWindow()
         {
@@ -50,8 +50,8 @@ namespace WpfApp1
             
             a = a > 1 ? 0 : a + 0.01F;
             b = b > 1 ? 0 : b + 0.01F;
-            c = c > 360 ? 0 : c + 1F;
-            d = d > 16000 ? 0 : d + 10F;
+            c = c > 360 ? 0 : c + 1;
+            d = d > 16000 ? 0 : d + 10;
         }
 
         private void delegatedosomething()
