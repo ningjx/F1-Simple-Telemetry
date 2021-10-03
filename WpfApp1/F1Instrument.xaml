@@ -25,12 +25,12 @@
 
 
 
-            <local:Arc x:Name="arc_speed" Width="394" Height="394" Rect="17,17,360,360" StartAngle="120" EndAngle="421" Stroke="Blue" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
-            <local:Arc x:Name="arc_tr" Width="326" Height="326" Rect="24,24,278,278" StartAngle="128" EndAngle="307" Stroke="Green" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
-            <local:Arc x:Name="arc_break" Width="326" Height="326" Rect="24,24,278,278" StartAngle="410" EndAngle="311" Stroke="Red" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
+            <local:Arc x:Name="arc_speed" Width="394" Height="394" Rect="17,17,360,360" StartAngle="120" EndAngle="421" Stroke="#00a2e8" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
+            <local:Arc x:Name="arc_tr" Width="326" Height="326" Rect="25,25,277,277" StartAngle="128" EndAngle="307" Stroke="#16d213" StrokeThickness="35" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
+            <local:Arc x:Name="arc_break" Width="326" Height="326" Rect="24,24,278,278" StartAngle="410" EndAngle="311" Stroke="#d20003" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
 
             <StackPanel Margin="5" x:Name="dr">
-                <Path Fill="Yellow">
+                <Path Fill="#0ae404">
                     <Path.Data>
                         <CombinedGeometry GeometryCombineMode="Union">
                             <CombinedGeometry.Geometry1>
