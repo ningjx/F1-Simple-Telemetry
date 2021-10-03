@@ -26,7 +26,9 @@ namespace WpfApp1
         public F1Instrument()
         {
             InitializeComponent();
-            Gear = 0;
+            Gear = -1;
+            SetGear(0);
+            SetDRS(false);
             //img_cr.Source = new BitmapImage(new Uri("/Resources/cr.png", UriKind.Relative));
             //img_lb.Source = new BitmapImage(new Uri("/Resources/lable.png", UriKind.Relative));
         }

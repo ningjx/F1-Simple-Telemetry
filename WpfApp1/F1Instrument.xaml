@@ -9,7 +9,7 @@
         <Grid Height="500" Width="500">
             <Grid  Width="800" Margin="-150,172,-150,220" HorizontalAlignment="Center">
                 <Grid Name="gear_grid" Width="800" Margin="0,0,0,0" VerticalAlignment="Center">
-                    <Label Content="R" Name="lb_R" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"/>
+                    <Label Content="R" Name="lb_R" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"/>
                     <Label Content="N" Name="lb_N" Margin="80,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
                     <Label Content="1" Name="lb_1" Margin="160,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
                     <Label Content="2" Name="lb_2" Margin="240,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
