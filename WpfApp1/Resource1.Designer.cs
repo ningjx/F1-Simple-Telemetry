@@ -79,5 +79,15 @@ namespace WpfApp1 {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] SourceHanSansCN_Normal {
+            get {
+                object obj = ResourceManager.GetObject("SourceHanSansCN_Normal", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

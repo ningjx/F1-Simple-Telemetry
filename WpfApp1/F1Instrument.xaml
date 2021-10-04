@@ -9,16 +9,16 @@
         <Grid Height="500" Width="500">
             <Grid  Width="800" Margin="-150,172,-150,220" HorizontalAlignment="Center">
                 <Grid Name="gear_grid" Width="800" Margin="0,0,0,0" VerticalAlignment="Center">
-                    <Label Content="R" Name="lb_R" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"/>
-                    <Label Content="N" Name="lb_N" Margin="80,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="1" Name="lb_1" Margin="160,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="2" Name="lb_2" Margin="240,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="3" Name="lb_3" Margin="320,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="4" Name="lb_4" Margin="400,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="5" Name="lb_5" Margin="480,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="6" Name="lb_6" Margin="560,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="7" Name="lb_7" Margin="640,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
-                    <Label Content="8" Name="lb_8" Margin="720,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="微软雅黑" FontSize="40"></Label>
+                    <Label Content="R" Name="lb_R" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"/>
+                    <Label Content="N" Name="lb_N" Margin="80,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="1" Name="lb_1" Margin="160,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="2" Name="lb_2" Margin="240,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="3" Name="lb_3" Margin="320,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="4" Name="lb_4" Margin="400,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="5" Name="lb_5" Margin="480,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="6" Name="lb_6" Margin="560,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="7" Name="lb_7" Margin="640,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
+                    <Label Content="8" Name="lb_8" Margin="720,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="40"></Label>
                 </Grid>
             </Grid>
             <local:Arc x:Name="gear_cover_cir" Width="800" Height="800" Rect="0,0,800,800" StartAngle="0" EndAngle="360" Stroke="Black" StrokeThickness="560" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
@@ -52,16 +52,16 @@
             </StackPanel>
 
             <Grid Width="150" Height="80" HorizontalAlignment="Center" Margin="175,138,175,282">
-                <Label Name="lb_DRS" Content="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="微软雅黑" Margin="14,-10,14,10"></Label>
+                <Label Name="lb_DRS" Content="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></Label>
             </Grid>
             
             <Image Name="img_cr" Source="/Resources/cr.png"></Image>
             <Image Name="img_lb" Source="/Resources/lable.png"/>
             <Grid Width="180" Height="80" Margin="160,281,160,139">
-                <Label Name="lb_rpm" Content="00000" FontSize="42" HorizontalAlignment="Center" Foreground="White" FontFamily="微软雅黑" Margin="14,-10,14,10"></Label>
+                <Label Name="lb_rpm" Content="00000" FontSize="42" HorizontalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></Label>
             </Grid>
             <Grid Width="170" Height="90" Margin="165,353,165,57">
-                <Label Name="lb_speed" Content="000" FontSize="75" HorizontalAlignment="Center" Foreground="White" FontFamily="微软雅黑" Margin="12,-14,16,14"></Label>
+                <Label Name="lb_speed" Content="000" FontSize="75" HorizontalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" Margin="12,-14,16,14"></Label>
             </Grid>
         </Grid>
     </Grid>

@@ -38,6 +38,13 @@ namespace WpfApp1
             }
         }
 
+        public static void Dispose()
+        {
+            Stop();
+            UDP.Close();
+            UDP.Dispose();
+        }
+
         private static void Stop()
         {
             RecThread.Abort();

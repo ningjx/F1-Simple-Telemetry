@@ -16,6 +16,12 @@ namespace WpfApp1
             var ip = Helper.GetLocalIP();
             lb_ip.Content = $"当前IP：{ip}";
             lb_port.Content = $"当前端口：{DataReciver.Port}";
+            Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DataReciver.Dispose();
         }
 
         public delegate void F1Delegate(Packet packet);
