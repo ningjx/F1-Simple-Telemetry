@@ -29,9 +29,9 @@ namespace WpfApp1
                 //case PacketType.Motion:
                 //    pack = new MotionPacket();
                 //    break;
-                //case PacketType.Participants:
-                //    pack = new ParticipantPacket();
-                //    break;
+                case PacketType.Participants:
+                    pack = new ParticipantPacket();
+                    break;
                 //case PacketType.Session:
                 //    pack = new SessionPacket();
                 //    break;

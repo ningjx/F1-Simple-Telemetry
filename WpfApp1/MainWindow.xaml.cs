@@ -10,6 +10,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int Index = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,10 +33,15 @@ namespace WpfApp1
             if (packet == null)
                 return;
 
-            if (packet.PacketType == PacketType.CarTelemetry)
+            if (packet.PacketType == PacketType.Participants)
+            {
+                var curPack = packet as ParticipantPacket;
+                Index = curPack.FieldParticipantData.ToList().FindIndex(t => !t.IsAiControlled);
+            }
+            else if (packet.PacketType == PacketType.CarTelemetry)
             {
                 var curPack = packet as TelemetryPacket;
-                var data = curPack.FieldTelemetryData.Last();
+                var data = curPack.FieldTelemetryData[Index];
 
                 f1.SetBreak(data.Brake);
                 f1.SetThr(data.Throttle);
@@ -44,7 +50,7 @@ namespace WpfApp1
                 f1.SetGear(data.Gear);
                 f1.SetDRS(data.DrsActive);
             }
-            if (packet.PacketType == PacketType.CarStatus)
+            else if (packet.PacketType == PacketType.CarStatus)
             {
                 var curPack = packet as CarStatusPacket;
                 var data = curPack.FieldCarStatusData[0];
