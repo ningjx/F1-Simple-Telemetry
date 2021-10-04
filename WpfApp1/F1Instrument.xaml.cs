@@ -23,9 +23,9 @@ namespace WpfApp1
     public partial class F1Instrument : UserControl
     {
         private int Gear;
-        private bool DRS_On = false;
-        private bool DRS_Nev = false;
-        private bool DRS_Ena = false;
+        private bool DRS_On = true;
+        private bool DRS_Nev = true;
+        private bool DRS_Ena = true;
         private int RPM;
         private int SPEED;
 
@@ -36,6 +36,8 @@ namespace WpfApp1
             Gear = -1;
             SetGear(0);
             SetDRS(false);
+            DRSNegative(false);
+            DRSEnable(false);
             //img_cr.Source = new BitmapImage(new Uri("/Resources/cr.png", UriKind.Relative));
             //img_lb.Source = new BitmapImage(new Uri("/Resources/lable.png", UriKind.Relative));
         }
