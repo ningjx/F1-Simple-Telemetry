@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace WpfApp1
+namespace F1Tools
 {
     public static class Helper
     {

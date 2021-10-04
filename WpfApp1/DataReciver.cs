@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace WpfApp1
+namespace F1Tools
 {
     public static class DataReciver
     {

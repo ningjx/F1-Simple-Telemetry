@@ -1,6 +1,6 @@
 ﻿using Codemasters.F1_2020;
 
-namespace WpfApp1
+namespace F1Tools
 {
     public class TypeFactory
     {

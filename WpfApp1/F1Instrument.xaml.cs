@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace F1Tools
 {
     /// <summary>
     /// F1Instrument.xaml 的交互逻辑
