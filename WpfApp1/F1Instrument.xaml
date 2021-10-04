@@ -51,7 +51,7 @@
                 </Path>
             </StackPanel>
 
-            <Grid Width="150" Height="80" HorizontalAlignment="Center" Margin="175,138,175,282">
+            <Grid Width="150" Height="50" HorizontalAlignment="Center" Margin="175,147,175,303">
                 <Label Name="lb_DRS" Content="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></Label>
             </Grid>
             
