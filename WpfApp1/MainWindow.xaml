@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="500"
-        KeyDown="MainWindows_Keydown">
+        Title="MainWindow" Height="500" Width="500">
     <Grid Background="Black" Width="500" Height="500" Margin="0,0,0,0">
         <local:F1Instrument x:Name="f1"></local:F1Instrument>
     </Grid>
