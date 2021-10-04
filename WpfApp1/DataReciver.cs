@@ -2,39 +2,40 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace WpfApp1
 {
     public static class DataReciver
     {
         private static UdpClient UDP;
-        //private static Task RecTask;
         private static IPEndPoint IP;
         private static Packet Packet;
         private static Thread RecThread;
-        private static int Port = 666;
+        private static int _port = 666;
 
         static DataReciver()
         {
-            UDP = new UdpClient(Port);
-            //RecTask = new Task(Handle);
+            UDP = new UdpClient(_port);
             RecThread = new Thread(Handle);
             RecThread.Start();
         }
 
         private static void Run()
         {
-            //RecTask.Start();
             RecThread.Start();
         }
 
-        public static void ChangePort(int port)
+        public static int Port
         {
-            Stop();
-            Port = port;
-            UDP = new UdpClient(Port);
-            Run();
+            get { return _port; }
+            set
+            {
+
+                Stop();
+                _port = Port;
+                UDP = new UdpClient(Port);
+                Run();
+            }
         }
 
         private static void Stop()

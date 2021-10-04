@@ -70,6 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="Arc.cs" />
     <Compile Include="DataReciver.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

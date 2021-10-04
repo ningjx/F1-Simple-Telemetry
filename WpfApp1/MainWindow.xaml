@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="500">
+        Title="MainWindow" Height="510" Width="510">
     <Grid Background="Black" Width="500" Height="500" Margin="0,0,0,0">
         <local:F1Instrument x:Name="f1"></local:F1Instrument>
+        <!--<Grid x:Name="gr_ip" Background="White" Height="100" Width="500" Opacity="0.9" VerticalAlignment="Center" HorizontalAlignment="Center">
+            </Grid>-->
+        <StackPanel x:Name="sp_ip" Width="500" Height="120" Opacity="0.95" Orientation="Vertical" Background="White">
+            <Label x:Name="lb_ip" Content="当前IP：0.0.0.0" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label x:Name="lb_port" Content="端口：666" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </StackPanel>
     </Grid>
 </Window>

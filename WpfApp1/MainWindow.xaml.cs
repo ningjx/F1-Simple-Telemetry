@@ -13,10 +13,18 @@ namespace WpfApp1
         {
             InitializeComponent();
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
+            var ip = Helper.GetLocalIP();
+            lb_ip.Content = $"当前IP：{ip}";
+            lb_port.Content = $"当前端口：{DataReciver.Port}";
         }
 
-        private void DataReciver_ReciveEvent(Packet packet)
+        public delegate void F1Delegate(Packet packet);
+
+        public void F1Handle(Packet packet)
         {
+            if (packet == null)
+                return;
+
             if (packet.PacketType == PacketType.CarTelemetry)
             {
                 var curPack = packet as TelemetryPacket;
@@ -37,6 +45,13 @@ namespace WpfApp1
                 f1.DRSEnable(data.DrsAllowed);
                 f1.DRSNegative(data.DrsFailure);
             }
+
+            sp_ip.Visibility = Visibility.Hidden;
+        }
+
+        private void DataReciver_ReciveEvent(Packet packet)
+        {
+            f1.Dispatcher.Invoke(new F1Delegate(F1Handle), packet);
         }
     }
 }
