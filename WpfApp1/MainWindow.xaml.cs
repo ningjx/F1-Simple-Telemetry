@@ -1,4 +1,5 @@
 ﻿using Codemasters.F1_2020;
+using System.Linq;
 using System.Windows;
 
 
@@ -34,7 +35,7 @@ namespace WpfApp1
             if (packet.PacketType == PacketType.CarTelemetry)
             {
                 var curPack = packet as TelemetryPacket;
-                var data = curPack.FieldTelemetryData[0];
+                var data = curPack.FieldTelemetryData.Last();
 
                 f1.SetBreak(data.Brake);
                 f1.SetThr(data.Throttle);
