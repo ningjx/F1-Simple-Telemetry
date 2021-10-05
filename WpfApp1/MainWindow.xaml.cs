@@ -10,23 +10,24 @@ namespace F1Tools
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int Index = 0;
+        private int PlayerIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
             var ip = Helper.GetLocalIP();
             lb_ip.Content = $"当前IP：{ip}";
             lb_port.Content = $"当前端口：{DataReciver.Port}";
-            Closing += MainWindow_Closing;
-        }
-
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            DataReciver.Dispose();
         }
 
         public delegate void F1Delegate(Packet packet);
+
+        private void DataReciver_ReciveEvent(Packet packet)
+        {
+            f1.Dispatcher.Invoke(new F1Delegate(F1Handle), packet);
+        }
 
         public void F1Handle(Packet packet)
         {
@@ -36,12 +37,12 @@ namespace F1Tools
             if (packet.PacketType == PacketType.Participants)
             {
                 var curPack = packet as ParticipantPacket;
-                Index = curPack.FieldParticipantData.ToList().FindIndex(t => !t.IsAiControlled);
+                PlayerIndex = curPack.FieldParticipantData.ToList().FindIndex(t => !t.IsAiControlled);
             }
             else if (packet.PacketType == PacketType.CarTelemetry)
             {
                 var curPack = packet as TelemetryPacket;
-                var data = curPack.FieldTelemetryData[Index];
+                var data = curPack.FieldTelemetryData[PlayerIndex];
 
                 f1.SetBreak(data.Brake);
                 f1.SetThr(data.Throttle);
@@ -60,11 +61,12 @@ namespace F1Tools
             }
 
             sp_ip.Visibility = Visibility.Hidden;
+
         }
 
-        private void DataReciver_ReciveEvent(Packet packet)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            f1.Dispatcher.Invoke(new F1Delegate(F1Handle), packet);
+            DataReciver.Dispose();
         }
     }
 }

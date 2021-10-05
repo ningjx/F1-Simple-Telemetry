@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:F1Tools"
         mc:Ignorable="d"
-        Title="MainWindow" Height="510" Width="510">
+        Title="MainWindow" Height="510" Width="510" 
+        Closing="Window_Closing">
     <Grid Background="Black" Width="500" Height="500" Margin="0,0,0,0">
         <local:F1Instrument x:Name="f1"></local:F1Instrument>
         <StackPanel x:Name="sp_ip" Width="500" Height="120" Opacity="0.95" Orientation="Vertical" Background="White">
