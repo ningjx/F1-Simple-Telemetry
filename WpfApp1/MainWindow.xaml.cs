@@ -1,7 +1,8 @@
 ﻿using Codemasters.F1_2020;
 using System.Linq;
+using System.Timers;
 using System.Windows;
-
+using System.Windows.Input;
 
 namespace F1Tools
 {
@@ -11,6 +12,7 @@ namespace F1Tools
     public partial class MainWindow : Window
     {
         private int PlayerIndex = 0;
+        private Timer Timer;
 
         public MainWindow()
         {
@@ -20,9 +22,26 @@ namespace F1Tools
             var ip = Helper.GetLocalIP();
             lb_ip.Content = $"当前IP：{ip}";
             lb_port.Content = $"当前端口：{DataReciver.Port}";
+
+            Timer = new Timer(3000)
+            {
+                AutoReset = false
+            };
+            Timer.Elapsed += Timer_Elapsed;
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            gr_close.Dispatcher.Invoke(new WindowDelegate(HideCloseIcon));
+        }
+
+        private void HideCloseIcon()
+        {
+            gr_close.Visibility = Visibility.Hidden;
         }
 
         public delegate void F1Delegate(Packet packet);
+        public delegate void WindowDelegate();
 
         private void DataReciver_ReciveEvent(Packet packet)
         {
@@ -67,6 +86,61 @@ namespace F1Tools
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             DataReciver.Dispose();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Window_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            gr_close.Visibility = Visibility.Visible;
+        }
+
+        private void Window_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Timer.Enabled = true;
+            Timer.Start();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                if (e.Delta > 0)
+                {
+                    view_box.Height += 10;
+                    view_box.Width += 10;
+                }
+                else
+                {
+                    view_box.Height -= 10;
+                    view_box.Width -= 10;
+
+                }
+                Width = view_box.Width * 1.1;
+                Height = view_box.Height * 1.1;
+                gr_bac.Height = view_box.Height * 1.1;
+                gr_bac.Width = view_box.Height * 1.1;
+            }
+            else
+            {
+                f1.img_bc.Opacity = e.Delta > 0 ? f1.img_bc.Opacity += 0.1 : f1.img_bc.Opacity -= 0.1;
+                f1.img_bc.Opacity = f1.img_bc.Opacity > 1 ? 1 : f1.img_bc.Opacity;
+                f1.img_bc.Opacity = f1.img_bc.Opacity <= 0.01 ? 0.01 : f1.img_bc.Opacity;
+            }
+        }
+
+        private void Window_Deactivated(object sender, System.EventArgs e)
+        {
+            var window = sender as Window;
+            window.Topmost = true;
         }
     }
 }

@@ -63,6 +63,16 @@ namespace F1Tools {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap bc {
+            get {
+                object obj = ResourceManager.GetObject("bc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap cr {
             get {
                 object obj = ResourceManager.GetObject("cr", resourceCulture);
