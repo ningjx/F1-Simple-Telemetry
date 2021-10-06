@@ -32,6 +32,13 @@
                 <Grid x:Name="gr_close" Width="30" Height="30" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <Button Content="X" FontSize="20" FontFamily="SourceHanSansCN-Normal" Width="30" Height="30" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click"></Button>
                 </Grid>
+
+                <Grid Visibility="Hidden" x:Name="tip" Width="200" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="0.95" Background="White">
+                    <Button Content="X" FontSize="10" FontFamily="SourceHanSansCN-Normal" Width="15" Height="15" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_1"></Button>
+                    <TextBlock HorizontalAlignment="Center" FontFamily="SourceHanSansCN-Normal" Foreground="Black" FontSize="12">有新版本，
+                        <Hyperlink NavigateUri="https://github.com/ningjx/F1-2020-Telemetering-Tools/releases">点击此处</Hyperlink>下载
+                    </TextBlock>
+                </Grid>
             </Grid>
         </Viewbox>
     </Grid>

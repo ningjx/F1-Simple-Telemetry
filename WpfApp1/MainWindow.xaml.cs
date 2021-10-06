@@ -28,11 +28,21 @@ namespace F1Tools
                 AutoReset = false
             };
             Timer.Elapsed += Timer_Elapsed;
+
+            Dispatcher.Invoke(new WindowDelegate(CheckUpdate));
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             gr_close.Dispatcher.Invoke(new WindowDelegate(HideCloseIcon));
+        }
+
+        private void CheckUpdate()
+        {
+            if (Helper.CheckUpdate())
+            {
+                tip.Visibility = Visibility.Visible;
+            }
         }
 
         private void HideCloseIcon()
@@ -141,6 +151,11 @@ namespace F1Tools
         {
             var window = sender as Window;
             window.Topmost = true;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            tip.Visibility = Visibility.Hidden;
         }
     }
 }
