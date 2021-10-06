@@ -1,10 +1,5 @@
-﻿using Codemasters.F1_2019;
-using Codemasters.F1_2020;
-using Codemasters.F1_2021;
-using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
-using System.Threading;
 using static F1Tools.TypeFactory;
 
 namespace F1Tools
@@ -13,15 +8,29 @@ namespace F1Tools
     {
         private static UdpClient UDP;
         private static IPEndPoint IP;
-        public static Thread RecThread;
+        public static MicroTimer MicroTimer;
         private static int _port = 666;
         private static GameVersion _version = GameVersion.F1_2020;
 
         static DataReciver()
         {
             UDP = new UdpClient(_port);
-            RecThread = new Thread(Handle);
-            RecThread.Start();
+            MicroTimer = new MicroTimer(1, 1);
+            MicroTimer.OnRunningCallback += MicroTimer_OnRunningCallback;
+            MicroTimer.Start();
+        }
+
+        private static void MicroTimer_OnRunningCallback(int id, int msg, int user, int param1, int param2)
+        {
+            if (UDP.Available <= 0)
+                return;
+
+            var bytes = UDP.Receive(ref IP);
+            if (bytes.Length > 0)
+            {
+                var packet = TypeFactory.GetPacket(bytes, _version);
+                ReciveEvent?.Invoke(packet);
+            }
         }
 
         public static int Port
@@ -29,10 +38,10 @@ namespace F1Tools
             get => _port;
             set
             {
-                Stop();
+                MicroTimer.Stop();
                 _port = Port;
                 UDP = new UdpClient(Port);
-                Run();
+                MicroTimer.Start();
             }
         }
 
@@ -42,51 +51,15 @@ namespace F1Tools
             set
             {
                 _version = value;
-                if (RecThread.ThreadState == ThreadState.Stopped)
-                    Run();
+                MicroTimer.Start();
             }
-        }
-
-        private static void Stop()
-        {
-            RecThread.Abort();
-        }
-
-        private static void Run()
-        {
-            if (RecThread.ThreadState != (ThreadState.Stopped | ThreadState.Aborted))
-                RecThread.Abort();
-
-            RecThread = new Thread(Handle);
-            RecThread.Start();
         }
 
         public static void Dispose()
         {
-            Stop();
+            MicroTimer.Dispose();
             UDP.Close();
             UDP.Dispose();
-        }
-
-        private static void Handle()
-        {
-            try
-            {
-                while (true)
-                {
-                    Thread.Sleep(0);
-                    if (UDP.Available <= 0)
-                        continue;
-
-                    var bytes = UDP.Receive(ref IP);
-                    if (bytes.Length > 0)
-                    {
-                        var packet = TypeFactory.GetPacket(bytes, _version);
-                        ReciveEvent?.Invoke(packet);
-                    }
-                }
-            }
-            catch { }
         }
 
         public delegate void ReciverHandler(object packet);

@@ -117,5 +117,16 @@ namespace F1Tools
             }
             catch { return false; }
         }
+
+        public static ulong GetCpuID(int idx)
+        {
+            ulong cpuid = 0;
+            if (idx < 0 || idx >= System.Environment.ProcessorCount)
+            {
+                idx = 0;
+            }
+            cpuid |= 1UL << idx;
+            return cpuid;
+        }
     }
 }
