@@ -157,5 +157,10 @@ namespace F1Tools
         {
             tip.Visibility = Visibility.Hidden;
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/ningjx/F1-2020-Telemetering-Tools/releases");
+        }
     }
 }
