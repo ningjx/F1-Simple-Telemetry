@@ -28,16 +28,18 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Grid x:Name="gr_close" Width="30" Height="30" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Grid x:Name="gr_close" Width="300" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
+                    <ComboBox Name="game_v" Background="White" Width="150" FontSize="20" SelectionChanged="game_v_SelectionChanged"></ComboBox>
                     <Button Content="X" FontSize="20" FontFamily="SourceHanSansCN-Normal" Width="30" Height="30" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click"></Button>
                 </Grid>
 
-                <Grid Visibility="Hidden" x:Name="tip" Width="500" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="0.95" Background="White">
+                <Grid Visibility="Hidden" x:Name="tip" Width="350" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="0.95" Background="White">
                     <Button Content="X" FontSize="20" FontFamily="SourceHanSansCN-Normal" Width="20" Height="20" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_1"></Button>
                     <TextBlock HorizontalAlignment="Center" FontFamily="SourceHanSansCN-Normal" Foreground="Black" FontSize="25">有新版本，
                         <Hyperlink NavigateUri="https://github.com/ningjx/F1-2020-Telemetering-Tools/releases" Click="Hyperlink_Click" FontFamily="SourceHanSansCN-Normal">点击此处</Hyperlink>下载
                     </TextBlock>
                 </Grid>
+
             </Grid>
         </Viewbox>
     </Grid>

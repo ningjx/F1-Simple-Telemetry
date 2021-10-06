@@ -1,11 +1,13 @@
-﻿using Codemasters.F1_2020;
-using System;
+﻿using Codemasters.F1_2019;
+using Codemasters.F1_2020;
+using Codemasters.F1_2021;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using static F1Tools.TypeFactory;
 using Timer = System.Timers.Timer;
 
 namespace F1Tools
@@ -15,13 +17,17 @@ namespace F1Tools
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int PlayerIndex = 0;
         private Timer Timer;
 
         public MainWindow()
         {
             InitializeComponent();
+            game_v.Items.Add("F1 2019");
+            game_v.Items.Add("F1 2020");
+            game_v.Items.Add("F1 2021");
+            game_v.SelectedItem = "F1 2020";
 
+            DataReciver.Version = TypeFactory.GameVersion.F1_2020;
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
             var ip = Helper.GetLocalIP();
             lb_ip.Content = $"当前IP：{ip}";
@@ -33,14 +39,19 @@ namespace F1Tools
             };
             Timer.Elapsed += Timer_Elapsed;
 
-            Dispatcher.InvokeAsync(() =>
+            Dispatcher.Invoke(() =>
             {
-                if (Helper.CheckUpdate())
+                Task.Run(() =>
                 {
-                    tip.Visibility = Visibility.Visible;
-                }
+                    if (Helper.CheckUpdate())
+                    {
+                        tip.Visibility = Visibility.Visible;
+                    }
+                });
             });
         }
+
+        private delegate void WindowDelegate();
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -52,48 +63,21 @@ namespace F1Tools
             gr_close.Visibility = Visibility.Hidden;
         }
 
-        public delegate void F1Delegate(Packet packet);
-        public delegate void WindowDelegate();
-
-        private void DataReciver_ReciveEvent(Packet packet)
+        private void HideIP()
         {
-            f1.Dispatcher.Invoke(new F1Delegate(F1Handle), packet);
-        }
-
-        public void F1Handle(Packet packet)
-        {
-            if (packet == null)
-                return;
-
-            if (packet.PacketType == PacketType.Participants)
-            {
-                var curPack = packet as ParticipantPacket;
-                PlayerIndex = curPack.FieldParticipantData.ToList().FindIndex(t => !t.IsAiControlled);
-            }
-            else if (packet.PacketType == PacketType.CarTelemetry)
-            {
-                var curPack = packet as TelemetryPacket;
-                var data = curPack.FieldTelemetryData[PlayerIndex];
-
-                f1.SetBreak(data.Brake);
-                f1.SetThr(data.Throttle);
-                f1.SetSpeed(data.SpeedKph);
-                f1.SetRPM(data.EngineRpm);
-                f1.SetGear(data.Gear);
-                f1.SetDRS(data.DrsActive);
-            }
-            else if (packet.PacketType == PacketType.CarStatus)
-            {
-                var curPack = packet as CarStatusPacket;
-                var data = curPack.FieldCarStatusData[0];
-
-                f1.DRSEnable(data.DrsAllowed);
-                f1.DRSNegative(data.DrsFailure);
-            }
-
             sp_ip.Visibility = Visibility.Hidden;
-
         }
+
+        #region F1 Data Processor
+        private delegate void F1InstrumentDelegate(F1Instrument f1, object packet);
+
+        private void DataReciver_ReciveEvent(object packet)
+        {
+            f1.Dispatcher.Invoke(new F1InstrumentDelegate(ShowDataHandle.F1Handle), f1, packet);
+            if (sp_ip.Visibility != Visibility.Hidden)
+                Dispatcher.Invoke(new WindowDelegate(HideIP));
+        }
+        #endregion
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -163,6 +147,23 @@ namespace F1Tools
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/ningjx/F1-2020-Telemetering-Tools/releases");
+        }
+
+        private void game_v_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            switch (game_v.SelectedItem as string)
+            {
+                case "F1 2019":
+                    DataReciver.Version = TypeFactory.GameVersion.F1_2019;
+                    break;
+                case "F1 2020":
+                    DataReciver.Version = TypeFactory.GameVersion.F1_2020;
+                    break;
+                case "F1 2021":
+                    DataReciver.Version = TypeFactory.GameVersion.F1_2021;
+                    break;
+            }
+
         }
     }
 }
