@@ -151,7 +151,7 @@ namespace F1Tools
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/ningjx/F1-2020-Telemetering-Tools/releases");
+            System.Diagnostics.Process.Start("explorer.exe", "https://api.gongjiaxin.com/file/downloadfile/F1Tools.exe");
         }
 
         private void game_v_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
