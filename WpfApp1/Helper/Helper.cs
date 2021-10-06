@@ -89,29 +89,33 @@ namespace F1Tools
 
         public static bool CheckUpdate()
         {
-            var client = new HttpClient();
-            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://raw.githubusercontent.com/ningjx/F1-2020-Telemetering-Tools/master/WpfApp1/Properties/AssemblyInfo.cs"))
+            try
             {
-                var response = client.SendAsync(request).Result;
-
-                if (response.IsSuccessStatusCode)
+                var client = new HttpClient();
+                using (var request = new HttpRequestMessage(HttpMethod.Get, "https://raw.githubusercontent.com/ningjx/F1-2020-Telemetering-Tools/master/WpfApp1/Properties/AssemblyInfo.cs"))
                 {
-                    var dataString = response.Content.ReadAsStringAsync().Result;
-                    if (!string.IsNullOrEmpty(dataString))
+                    var response = client.SendAsync(request).Result;
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        var re = new Regex(@"(?<=AssemblyVersion\("")\d\.\d\.\d\.\d(?<!\""\))");
-                        var version = re.Match(dataString).Value;
-                        if (!string.IsNullOrEmpty(version))
+                        var dataString = response.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(dataString))
                         {
-                            var items = version.Split('.');
-                            var curVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                            var newVer = new Version(Convert.ToInt32(items[0]), Convert.ToInt32(items[1]), Convert.ToInt32(items[2]), Convert.ToInt32(items[3]));
-                            return newVer > curVer;
+                            var re = new Regex(@"(?<=AssemblyVersion\("")\d\.\d\.\d\.\d(?<!\""\))");
+                            var version = re.Match(dataString).Value;
+                            if (!string.IsNullOrEmpty(version))
+                            {
+                                var items = version.Split('.');
+                                var curVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                                var newVer = new Version(Convert.ToInt32(items[0]), Convert.ToInt32(items[1]), Convert.ToInt32(items[2]), Convert.ToInt32(items[3]));
+                                return newVer > curVer;
+                            }
                         }
                     }
+                    return false;
                 }
-                return false;
             }
+            catch { return false; }
         }
     }
 }
