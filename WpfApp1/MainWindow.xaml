@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:F1Tools"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="550" 
+        Title="MainWindow" Height="300" Width="300" 
         Closing="Window_Closing"
         WindowStyle="None" 
         AllowsTransparency="True"
@@ -15,17 +15,16 @@
         MouseWheel="Window_MouseWheel"
         Deactivated="Window_Deactivated"
         Background="#00000000">
-    <Grid Name="gr_bac" Width="550" Height="550" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Viewbox x:Name="view_box" Width="500" Height="500" Stretch="Fill">
+    <Grid Name="gr_bac" Width="300" Height="300" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Viewbox x:Name="view_box" Width="300" Height="300" Stretch="Fill">
             <Grid Width="500" Height="500" Margin="0,0,0,0">
                 <local:F1Instrument x:Name="f1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:F1Instrument>
-
-                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="sp_ip" Width="500" Height="170" Opacity="0.95" Orientation="Vertical" Background="White">
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="sp_ip" Width="500" Height="200" Opacity="0.95" Orientation="Vertical" Background="White">
                     <Label x:Name="lb_ip" FontFamily="SourceHanSansCN-Normal" Content="当前IP：0.0.0.0" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                     <Label x:Name="lb_port" FontFamily="SourceHanSansCN-Normal" Content="端口：666" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="50" Orientation="Vertical" Background="Transparent" Margin="140,3,140,0">
-                        <Label FontFamily="SourceHanSansCN-Normal" Content="透明度调节：鼠标滚轮" Foreground="Black" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                        <Label FontFamily="SourceHanSansCN-Normal" Content="大小调节：Ctrl+鼠标滚轮" Foreground="Black" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="82" Orientation="Vertical" Background="Transparent" Margin="100,3,100,0">
+                        <Label FontFamily="SourceHanSansCN-Normal" Content="透明度调节：鼠标滚轮" Foreground="Black" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+                        <Label FontFamily="SourceHanSansCN-Normal" Content="大小调节：Ctrl+鼠标滚轮" Foreground="Black" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
                     </StackPanel>
                 </StackPanel>
 
@@ -33,10 +32,10 @@
                     <Button Content="X" FontSize="20" FontFamily="SourceHanSansCN-Normal" Width="30" Height="30" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click"></Button>
                 </Grid>
 
-                <Grid Visibility="Hidden" x:Name="tip" Width="200" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="0.95" Background="White">
-                    <Button Content="X" FontSize="10" FontFamily="SourceHanSansCN-Normal" Width="15" Height="15" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_1"></Button>
-                    <TextBlock HorizontalAlignment="Center" FontFamily="SourceHanSansCN-Normal" Foreground="Black" FontSize="12">有新版本，
-                        <Hyperlink NavigateUri="https://github.com/ningjx/F1-2020-Telemetering-Tools/releases" Click="Hyperlink_Click">点击此处</Hyperlink>下载
+                <Grid  x:Name="tip" Width="500" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Opacity="0.95" Background="White">
+                    <Button Content="X" FontSize="20" FontFamily="SourceHanSansCN-Normal" Width="20" Height="20" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_1"></Button>
+                    <TextBlock HorizontalAlignment="Center" FontFamily="SourceHanSansCN-Normal" Foreground="Black" FontSize="25">有新版本，
+                        <Hyperlink NavigateUri="https://github.com/ningjx/F1-2020-Telemetering-Tools/releases" Click="Hyperlink_Click" FontFamily="SourceHanSansCN-Normal">点击此处</Hyperlink>下载
                     </TextBlock>
                 </Grid>
             </Grid>

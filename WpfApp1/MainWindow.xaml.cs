@@ -1,8 +1,12 @@
 ﻿using Codemasters.F1_2020;
+using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using Timer = System.Timers.Timer;
 
 namespace F1Tools
 {
@@ -29,20 +33,18 @@ namespace F1Tools
             };
             Timer.Elapsed += Timer_Elapsed;
 
-            Dispatcher.Invoke(new WindowDelegate(CheckUpdate));
+            Dispatcher.InvokeAsync(() =>
+            {
+                if (Helper.CheckUpdate())
+                {
+                    tip.Visibility = Visibility.Visible;
+                }
+            });
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             gr_close.Dispatcher.Invoke(new WindowDelegate(HideCloseIcon));
-        }
-
-        private void CheckUpdate()
-        {
-            if (Helper.CheckUpdate())
-            {
-                tip.Visibility = Visibility.Visible;
-            }
         }
 
         private void HideCloseIcon()
