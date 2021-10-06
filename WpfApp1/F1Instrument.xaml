@@ -7,7 +7,7 @@
              mc:Ignorable="d" Height="500" Width="500">
     <Grid Height="500"  Margin="0,0,0,0">
         <Grid Height="500" Width="500">
-            <Image Name="img_bc" Source="/Resources/bc.png" Opacity="0.5"></Image>
+            <Image Name="img_bc" Source="/Resources/bc.png" Opacity="0.7"></Image>
             <Grid Height="150" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="125,156,125,194">
                 <Grid  Width="800"  HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid Name="gear_grid" Width="800" Margin="0,0,0,0" VerticalAlignment="Center">
