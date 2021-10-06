@@ -39,19 +39,24 @@ namespace F1Tools
             };
             Timer.Elapsed += Timer_Elapsed;
 
-            Dispatcher.Invoke(() =>
+            Dispatcher.InvokeAsync(() =>
             {
                 Task.Run(() =>
                 {
                     if (Helper.CheckUpdate())
                     {
-                        tip.Visibility = Visibility.Visible;
+                        Dispatcher.Invoke(new WindowDelegate(TipShow));
                     }
                 });
             });
         }
 
         private delegate void WindowDelegate();
+
+        private void TipShow()
+        {
+            tip.Visibility = Visibility.Visible;
+        }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
