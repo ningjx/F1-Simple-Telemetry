@@ -22,12 +22,7 @@ namespace F1Tools
         public MainWindow()
         {
             InitializeComponent();
-            game_v.Items.Add("F1 2019");
-            game_v.Items.Add("F1 2020");
-            game_v.Items.Add("F1 2021");
-            game_v.SelectedItem = "F1 2020";
 
-            DataReciver.Version = TypeFactory.GameVersion.F1_2020;
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
             var ip = Helper.GetLocalIP();
             lb_ip.Content = $"当前IP：{ip}";
@@ -152,23 +147,6 @@ namespace F1Tools
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/F1-2020-Telemetering-Tools/releases");
-        }
-
-        private void game_v_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            switch (game_v.SelectedItem as string)
-            {
-                case "F1 2019":
-                    DataReciver.Version = TypeFactory.GameVersion.F1_2019;
-                    break;
-                case "F1 2020":
-                    DataReciver.Version = TypeFactory.GameVersion.F1_2020;
-                    break;
-                case "F1 2021":
-                    DataReciver.Version = TypeFactory.GameVersion.F1_2021;
-                    break;
-            }
-
         }
     }
 }

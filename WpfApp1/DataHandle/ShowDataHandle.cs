@@ -45,7 +45,6 @@ namespace F1Tools
                 var data = curPack.FieldCarStatusData[0];
 
                 f1.DRSEnable(data.DrsAllowed);
-                //f1.DRSNegative(data.DrsFailure);
             }
         }
 
@@ -93,7 +92,6 @@ namespace F1Tools
                 var data = curPack.FieldCarStatusData[0];
 
                 f1.DRSEnable(data.DrsAllowed);
-                //f1.DRSNegative(data.DrsFailure);
             }
         }
     }

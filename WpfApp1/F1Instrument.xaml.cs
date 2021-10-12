@@ -22,7 +22,7 @@ namespace F1Tools
     /// </summary>
     public partial class F1Instrument : UserControl
     {
-        private int Gear;
+        private int Gear = -1;
         private bool DRS_On = true;
         private bool DRS_Nev = true;
         private bool DRS_Ena = true;
@@ -88,15 +88,11 @@ namespace F1Tools
         public F1Instrument()
         {
             InitializeComponent();
-            Gear = -1;
             SetDRS(false);
             DRSNegative(false);
-            
-            //img_cr.Source = new BitmapImage(new Uri("/Resources/cr.png", UriKind.Relative));
-            //img_lb.Source = new BitmapImage(new Uri("/Resources/lable.png", UriKind.Relative));
-            lb_DRS.Foreground = new SolidColorBrush(Colors.White);
-            DRSEnable(false);
 
+            lb_DRS.Foreground = new SolidColorBrush(Colors.White);
+            
             lb_R.Foreground = new SolidColorBrush(Colors.Gray);
             lb_N.Foreground = new SolidColorBrush(Colors.Gray);
             lb_1.Foreground = new SolidColorBrush(Colors.Gray);
@@ -108,8 +104,8 @@ namespace F1Tools
             lb_7.Foreground = new SolidColorBrush(Colors.Gray);
             lb_8.Foreground = new SolidColorBrush(Colors.Gray);
 
-
             //需要放在Foreground初始化后面，因为xml中设置的Foreground已经被冻结，无法应用动画
+            DRSEnable(false);
             SetGear(0);
         }
 
