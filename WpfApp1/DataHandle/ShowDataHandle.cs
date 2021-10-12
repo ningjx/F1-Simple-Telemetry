@@ -32,8 +32,8 @@ namespace F1Tools
                 var curPack = packet as Codemasters.F1_2019.TelemetryPacket;
                 var data = curPack.FieldTelemetryData[curPack.PlayerCarIndex];
 
-                f1.SetBreak(data.Brake);
-                f1.SetThr(data.Throttle);
+                f1.SetBrake(data.Brake);
+                f1.SetThrottle(data.Throttle);
                 f1.SetSpeed(data.SpeedKph);
                 f1.SetRPM(data.EngineRpm);
                 f1.SetGear(data.Gear);
@@ -56,8 +56,8 @@ namespace F1Tools
                 var curPack = packet as Codemasters.F1_2020.TelemetryPacket;
                 var data = curPack.FieldTelemetryData[curPack.PlayerCarIndex];
 
-                f1.SetBreak(data.Brake);
-                f1.SetThr(data.Throttle);
+                f1.SetBrake(data.Brake);
+                f1.SetThrottle(data.Throttle);
                 f1.SetSpeed(data.SpeedKph);
                 f1.SetRPM(data.EngineRpm);
                 f1.SetGear(data.Gear);
@@ -80,8 +80,8 @@ namespace F1Tools
                 var curPack = packet as Codemasters.F1_2021.TelemetryPacket;
                 var data = curPack.FieldTelemetryData[curPack.PlayerCarIndex];
 
-                f1.SetBreak(data.Brake);
-                f1.SetThr(data.Throttle);
+                f1.SetBrake(data.Brake);
+                f1.SetThrottle(data.Throttle);
                 f1.SetSpeed(data.SpeedKph);
                 f1.SetRPM(data.EngineRpm);
                 f1.SetGear(data.Gear);

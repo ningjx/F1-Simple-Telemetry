@@ -113,12 +113,12 @@ namespace F1Tools
             SetGear(0);
         }
 
-        public void SetThr(float thr)
+        public void SetThrottle(float thr)
         {
             arc_tr.EndAngle = 128 + ((307 - 128) * thr);
         }
 
-        public void SetBreak(float bre)
+        public void SetBrake(float bre)
         {
             arc_break.EndAngle = 410 - ((410 - 311) * bre);
         }
