@@ -22,32 +22,99 @@ namespace F1Tools
     /// </summary>
     public partial class F1Instrument : UserControl
     {
-        private int Gear;
+        private int Gear = -1;
         private bool DRS_On = true;
         private bool DRS_Nev = true;
         private bool DRS_Ena = true;
         private int RPM;
         private int SPEED;
 
+        private DoubleAnimation DrsHiddenAc = new DoubleAnimation
+        {
+            From = 1,
+            To = 0,
+            Duration = TimeSpan.FromMilliseconds(200)
+        };
+        private DoubleAnimation DrsShowAc = new DoubleAnimation
+        {
+            From = 0,
+            To = 1,
+            Duration = TimeSpan.FromMilliseconds(200)
+        };
+
+        private DoubleAnimation sizeBigAn = new DoubleAnimation
+        {
+            From = 50,
+            To = 90,
+            Duration = TimeSpan.FromMilliseconds(300)
+        };
+        private DoubleAnimation sizeSmln = new DoubleAnimation
+        {
+            From = 90,
+            To = 50,
+            Duration = TimeSpan.FromMilliseconds(300)
+        };
+
+        private ColorAnimation GearIn = new ColorAnimation
+        {
+            From = Colors.Gray,
+            To = Colors.White,
+            Duration = TimeSpan.FromMilliseconds(300),
+
+        };
+        private ColorAnimation GearOut = new ColorAnimation
+        {
+            From = Colors.White,
+            To = Colors.Gray,
+            Duration = TimeSpan.FromMilliseconds(300),
+
+        };
+
+        private ColorAnimation DRS_Enable_Ac = new ColorAnimation
+        {
+            From = Colors.White,
+            To = Colors.Orange,
+            Duration = TimeSpan.FromMilliseconds(200),
+
+        };
+        private ColorAnimation DRS_Disable_Ac = new ColorAnimation
+        {
+            From = Colors.Orange,
+            To = Colors.White,
+            Duration = TimeSpan.FromMilliseconds(200),
+
+        };
 
         public F1Instrument()
         {
             InitializeComponent();
-            Gear = -1;
-            SetGear(0);
             SetDRS(false);
             DRSNegative(false);
+
+            lb_DRS.Foreground = new SolidColorBrush(Colors.White);
+            
+            lb_R.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_N.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_1.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_2.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_3.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_4.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_5.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_6.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_7.Foreground = new SolidColorBrush(Colors.Gray);
+            lb_8.Foreground = new SolidColorBrush(Colors.Gray);
+
+            //需要放在Foreground初始化后面，因为xml中设置的Foreground已经被冻结，无法应用动画
             DRSEnable(false);
-            //img_cr.Source = new BitmapImage(new Uri("/Resources/cr.png", UriKind.Relative));
-            //img_lb.Source = new BitmapImage(new Uri("/Resources/lable.png", UriKind.Relative));
+            SetGear(0);
         }
 
-        public void SetThr(float thr)
+        public void SetThrottle(float thr)
         {
             arc_tr.EndAngle = 128 + ((307 - 128) * thr);
         }
 
-        public void SetBreak(float bre)
+        public void SetBrake(float bre)
         {
             arc_break.EndAngle = 410 - ((410 - 311) * bre);
         }
@@ -75,7 +142,10 @@ namespace F1Tools
         {
             if (DRS_On != drs)
             {
-                dr.Visibility = drs ? Visibility.Visible : Visibility.Hidden;
+                if (drs)
+                    dr.BeginAnimation(OpacityProperty, DrsShowAc);
+                else
+                    dr.BeginAnimation(OpacityProperty, DrsHiddenAc);
                 DRS_On = drs;
             }
         }
@@ -84,7 +154,10 @@ namespace F1Tools
         {
             if (DRS_Ena != enable)
             {
-                lb_DRS.Foreground = enable ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.White);
+                if(enable)
+                    lb_DRS.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, DRS_Enable_Ac);
+                else
+                    lb_DRS.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, DRS_Disable_Ac);
                 DRS_Ena = enable;
             }
         }
@@ -110,34 +183,34 @@ namespace F1Tools
             switch (gear)
             {
                 case -1:
-                    x = 366;
+                    x = 225;
                     break;
                 case 0:
-                    x = 286;
+                    x = 175;
                     break;
                 case 1:
-                    x = 214;
+                    x = 125;
                     break;
                 case 2:
-                    x = 135;
+                    x = 75;
                     break;
                 case 3:
-                    x = 55;
+                    x = 25;
                     break;
                 case 4:
-                    x = -57;
+                    x = -50;
                     break;
                 case 5:
-                    x = -216;
+                    x = -150;
                     break;
                 case 6:
-                    x = -375;
+                    x = -250;
                     break;
                 case 7:
-                    x = -530;
+                    x = -350;
                     break;
                 case 8:
-                    x = -691;
+                    x = -450;
                     break;
             }
 
@@ -150,72 +223,97 @@ namespace F1Tools
             };
             gear_grid.BeginAnimation(MarginProperty, an);
 
-            var sizeBigAn = new DoubleAnimation
-            {
-                From = 40,
-                To = 75,
-                Duration = TimeSpan.FromMilliseconds(300)
-            };
 
-            var sizeSmln = new DoubleAnimation
-            {
-                From = 75,
-                To = 40,
-                Duration = TimeSpan.FromMilliseconds(300)
-            };
 
             switch (gear)
             {
                 case -1:
                     lb_R.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_R.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
                     break;
                 case 0:
                     lb_N.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_N.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+
                     break;
                 case 1:
                     lb_1.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_1.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+
                     break;
                 case 2:
-                    lb_2.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_2.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_2.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
                 case 3:
-                    lb_3.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_3.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_3.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
                 case 4:
-                    lb_4.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_4.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_4.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
                 case 5:
-                    lb_5.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_5.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_5.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
                 case 6:
-                    lb_6.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_6.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_6.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
                 case 7:
-                    lb_7.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_7.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_7.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
                 case 8:
-                    lb_8.BeginAnimation(FontSizeProperty, sizeBigAn); break;
+                    lb_8.BeginAnimation(FontSizeProperty, sizeBigAn);
+                    lb_8.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearIn);
+                    break;
             }
 
             switch (Gear)
             {
                 case -1:
                     lb_R.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_R.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+
                     break;
                 case 0:
                     lb_N.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_N.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
                     break;
                 case 1:
                     lb_1.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_1.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
                     break;
                 case 2:
-                    lb_2.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_2.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_2.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
                 case 3:
-                    lb_3.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_3.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_3.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
                 case 4:
-                    lb_4.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_4.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_4.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
                 case 5:
-                    lb_5.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_5.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_5.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
                 case 6:
-                    lb_6.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_6.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_6.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
                 case 7:
-                    lb_7.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_7.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_7.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
                 case 8:
-                    lb_8.BeginAnimation(FontSizeProperty, sizeSmln); break;
+                    lb_8.BeginAnimation(FontSizeProperty, sizeSmln);
+                    lb_8.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, GearOut);
+                    break;
             }
 
 

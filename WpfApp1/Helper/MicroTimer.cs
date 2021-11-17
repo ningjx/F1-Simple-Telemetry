@@ -76,7 +76,14 @@ namespace F1Tools
         /// <param name="param2"></param>
         private void TimerEventCallback(int id, int msg, int user, int param1, int param2)
         {
-            OnRunningCallback?.Invoke(id, msg, user, param1, param2);
+            try
+            {
+                OnRunningCallback?.Invoke(id, msg, user, param1, param2);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         /// <summary>

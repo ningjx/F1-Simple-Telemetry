@@ -10,7 +10,7 @@ namespace F1Tools
         private static IPEndPoint IP;
         public static MicroTimer MicroTimer;
         private static int _port = 666;
-        private static GameVersion _version = GameVersion.F1_2020;
+        private static GameVersion _version = GameVersion.Unkonwn;
 
         static DataReciver()
         {
@@ -28,7 +28,9 @@ namespace F1Tools
             var bytes = UDP.Receive(ref IP);
             if (bytes.Length > 0)
             {
-                var packet = TypeFactory.GetPacket(bytes, _version);
+                var packet = GetPacket(bytes, _version, out _version);
+                if (_version == GameVersion.Unkonwn)
+                    return;
                 ReciveEvent?.Invoke(packet);
             }
         }
@@ -45,15 +47,7 @@ namespace F1Tools
             }
         }
 
-        public static GameVersion Version
-        {
-            get => _version;
-            set
-            {
-                _version = value;
-                MicroTimer.Start();
-            }
-        }
+        public static GameVersion Version => _version;
 
         public static void Dispose()
         {

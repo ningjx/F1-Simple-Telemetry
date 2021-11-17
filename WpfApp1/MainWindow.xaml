@@ -29,7 +29,6 @@
                 </StackPanel>
 
                 <Grid x:Name="gr_close" Width="300" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden">
-                    <ComboBox Name="game_v" Background="White" Width="150" FontSize="20" SelectionChanged="game_v_SelectionChanged"></ComboBox>
                     <Button Content="X" FontSize="20" FontFamily="SourceHanSansCN-Normal" Width="30" Height="30" BorderThickness="0" Foreground="Red" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click"></Button>
                 </Grid>
 
