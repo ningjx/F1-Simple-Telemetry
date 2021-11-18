@@ -1,6 +1,7 @@
 ﻿using Codemasters.F1_2019;
 using Codemasters.F1_2020;
 using Codemasters.F1_2021;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace F1Tools
         public MainWindow()
         {
             InitializeComponent();
+
+            //ConsoleManager.Show();
 
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
             var ip = Helper.GetLocalIP();
@@ -69,9 +72,9 @@ namespace F1Tools
         }
 
         #region F1 Data Processor
-        private delegate void F1InstrumentDelegate(F1Instrument f1, object packet);
+        private delegate void F1InstrumentDelegate(F1Instrument f1, LocalData packet);
 
-        private void DataReciver_ReciveEvent(object packet)
+        private void DataReciver_ReciveEvent(LocalData packet)
         {
             f1.Dispatcher.Invoke(new F1InstrumentDelegate(ShowDataHandle.F1Handle), f1, packet);
             if (sp_ip.Visibility != Visibility.Hidden)

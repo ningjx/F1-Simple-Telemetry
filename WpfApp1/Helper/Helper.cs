@@ -11,6 +11,66 @@ namespace F1Tools
 {
     public static class Helper
     {
+
+        public static GameVersion GetGameVersion(byte[] bytes)
+        {
+            if (bytes.Length == 324)
+                return GameVersion.Horizon5;
+
+            try
+            {
+                Codemasters.F1_2021.Packet packet = null;
+                var type = Codemasters.F1_2021.CodemastersToolkit.GetPacketType(bytes);
+                switch (type)
+                {
+                    case Codemasters.F1_2021.PacketType.CarStatus:
+                        packet = new Codemasters.F1_2021.CarStatusPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.CarTelemetry:
+                        packet = new Codemasters.F1_2021.TelemetryPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.FinalClassification:
+                        packet = new Codemasters.F1_2021.FinalClassificationPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.Lap:
+                        packet = new Codemasters.F1_2021.LapPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.LobbyInfo:
+                        packet = new Codemasters.F1_2021.LobbyInfoPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.Motion:
+                        packet = new Codemasters.F1_2021.MotionPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.Participants:
+                        packet = new Codemasters.F1_2021.ParticipantPacket();
+                        break;
+                    case Codemasters.F1_2021.PacketType.Session:
+                        packet = new Codemasters.F1_2021.SessionPacket();
+                        break;
+                    default: break;
+                }
+
+                if (packet != null)
+                    packet.LoadBytes(bytes);
+
+                switch (packet?.PacketFormat)
+                {
+                    case 2019:
+                        return GameVersion.F1_2019;
+                    case 2020:
+                        return GameVersion.F1_2020;
+                    case 2021:
+                        return GameVersion.F1_2021;
+                    default:
+                        return GameVersion.Unkonwn;
+                }
+            }
+            catch
+            {
+                return GameVersion.Unkonwn;
+            }
+        }
+
         public static string GetIP()
         {
             string hostName = Dns.GetHostName();//本机名   

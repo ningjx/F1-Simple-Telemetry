@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
 using static F1Tools.TypeFactory;
 
@@ -28,10 +29,11 @@ namespace F1Tools
             var bytes = UDP.Receive(ref IP);
             if (bytes.Length > 0)
             {
-                var packet = GetPacket(bytes, _version, out _version);
-                if (_version == GameVersion.Unkonwn)
+                var data = GetData(bytes, _version, out _version);
+                if (_version == GameVersion.Unkonwn || data == null)
                     return;
-                ReciveEvent?.Invoke(packet);
+                ReciveEvent?.Invoke(data);
+                //Console.WriteLine($"{data.Throttle} {data.Brake}");
             }
         }
 
@@ -56,7 +58,7 @@ namespace F1Tools
             UDP.Dispose();
         }
 
-        public delegate void ReciverHandler(object packet);
+        public delegate void ReciverHandler(LocalData localData);
         public static event ReciverHandler ReciveEvent;
     }
 }

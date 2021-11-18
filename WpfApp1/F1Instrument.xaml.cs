@@ -45,12 +45,12 @@ namespace F1Tools
         private DoubleAnimation sizeBigAn = new DoubleAnimation
         {
             From = 50,
-            To = 90,
+            To = 80,
             Duration = TimeSpan.FromMilliseconds(300)
         };
         private DoubleAnimation sizeSmln = new DoubleAnimation
         {
-            From = 90,
+            From = 80,
             To = 50,
             Duration = TimeSpan.FromMilliseconds(300)
         };
@@ -92,7 +92,7 @@ namespace F1Tools
             DRSNegative(false);
 
             lb_DRS.Foreground = new SolidColorBrush(Colors.White);
-            
+
             lb_R.Foreground = new SolidColorBrush(Colors.Gray);
             lb_N.Foreground = new SolidColorBrush(Colors.Gray);
             lb_1.Foreground = new SolidColorBrush(Colors.Gray);
@@ -111,11 +111,15 @@ namespace F1Tools
 
         public void SetThrottle(float thr)
         {
+            thr = thr < 0 ? 0 : thr;
+            thr = thr > 1 ? 1 : thr;
             arc_tr.EndAngle = 128 + ((307 - 128) * thr);
         }
 
         public void SetBrake(float bre)
         {
+            bre = bre < 0 ? 0 : bre;
+            bre = bre > 1 ? 1 : bre;
             arc_break.EndAngle = 410 - ((410 - 311) * bre);
         }
 
@@ -123,8 +127,10 @@ namespace F1Tools
         {
             if (SPEED != sp)
             {
-                arc_speed.EndAngle = ((421 - 120) * (sp / 360.0)) + 120;
                 lb_speed.Content = sp.ToString();
+                sp = sp > 360 ? 360 : sp;
+                arc_speed.EndAngle = ((421 - 120) * (sp / 360.0)) + 120;
+
                 SPEED = sp;
             }
         }
@@ -154,7 +160,7 @@ namespace F1Tools
         {
             if (DRS_Ena != enable)
             {
-                if(enable)
+                if (enable)
                     lb_DRS.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, DRS_Enable_Ac);
                 else
                     lb_DRS.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, DRS_Disable_Ac);
