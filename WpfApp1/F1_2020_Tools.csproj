@@ -200,6 +200,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.HttpUtility">
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.netcore.universalwindowsplatform\6.2.12\ref\uap10.0.15138\System.Web.HttpUtility.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />

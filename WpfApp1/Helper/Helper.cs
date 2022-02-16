@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Web;
 
 namespace F1Tools
 {
@@ -158,7 +159,7 @@ namespace F1Tools
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var dataString = response.Content.ReadAsStringAsync().Result;
+                        var dataString = HttpUtility.HtmlDecode(response.Content.ReadAsStringAsync().Result);
                         if (!string.IsNullOrEmpty(dataString))
                         {
                             var re = new Regex(@"(?<=AssemblyVersion\("")\d\.\d\.\d\.\d(?<!\""\))");
