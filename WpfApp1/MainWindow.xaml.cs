@@ -28,8 +28,8 @@ namespace F1Tools
 
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
             var ip = Helper.GetLocalIP();
-            lb_ip.Content = $"当前IP：{ip}";
-            lb_port.Content = $"当前端口：{DataReciver.Port}";
+            lb_ip.Content = $"本机IP：{ip}";
+            lb_port.Content = $"端口：{DataReciver.Port}";
 
             Timer = new Timer(3000)
             {

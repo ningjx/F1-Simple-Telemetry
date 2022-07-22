@@ -10,7 +10,7 @@ namespace F1Tools
         private static UdpClient UDP;
         private static IPEndPoint IP;
         public static MicroTimer MicroTimer;
-        private static int _port = 666;
+        private static int _port = 20777;
         private static GameVersion _version = GameVersion.Unkonwn;
 
         static DataReciver()

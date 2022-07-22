@@ -20,8 +20,8 @@
             <Grid Width="500" Height="500" Margin="0,0,0,0">
                 <local:F1Instrument x:Name="f1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></local:F1Instrument>
                 <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="sp_ip" Width="500" Height="200" Opacity="0.95" Orientation="Vertical" Background="White">
-                    <Label x:Name="lb_ip" FontFamily="SourceHanSansCN-Normal" Content="当前IP：0.0.0.0" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                    <Label x:Name="lb_port" FontFamily="SourceHanSansCN-Normal" Content="端口：666" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                    <Label x:Name="lb_ip" FontFamily="SourceHanSansCN-Normal" Content="本机IP：0.0.0.0" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                    <Label x:Name="lb_port" FontFamily="SourceHanSansCN-Normal" Content="端口：20777" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                     <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="82" Orientation="Vertical" Background="Transparent" Margin="100,3,100,0">
                         <Label FontFamily="SourceHanSansCN-Normal" Content="透明度调节：鼠标滚轮" Foreground="Black" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
                         <Label FontFamily="SourceHanSansCN-Normal" Content="大小调节：Ctrl+鼠标滚轮" Foreground="Black" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
