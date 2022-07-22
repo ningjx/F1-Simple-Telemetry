@@ -29,7 +29,7 @@ namespace F1Tools
             DataReciver.ReciveEvent += DataReciver_ReciveEvent;
             var ip = Helper.GetLocalIP();
             lb_ip.Content = $"本机IP：{ip}";
-            lb_port.Content = $"端口：{DataReciver.Port}";
+            //port.Text = DataReciver.Port.ToString();
 
             Timer = new Timer(3000)
             {
@@ -41,10 +41,10 @@ namespace F1Tools
             {
                 //Task.Run(() =>
                 //{
-                    if (Helper.CheckUpdate())
-                    {
-                        Dispatcher.Invoke(new WindowDelegate(TipShow));
-                    }
+                if (Helper.CheckUpdate())
+                {
+                    Dispatcher.Invoke(new WindowDelegate(TipShow));
+                }
                 //});
             });
         }
@@ -150,6 +150,15 @@ namespace F1Tools
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/F1-2020-Telemetering-Tools/releases");
+        }
+
+        private void port_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (int.TryParse(port.Text, out int udpPort))
+            {
+                DataReciver.Port = udpPort;
+            }
+
         }
     }
 }
