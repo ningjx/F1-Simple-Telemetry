@@ -39,13 +39,13 @@ namespace F1Tools
 
             Dispatcher.InvokeAsync(() =>
             {
-                Task.Run(() =>
-                {
+                //Task.Run(() =>
+                //{
                     if (Helper.CheckUpdate())
                     {
                         Dispatcher.Invoke(new WindowDelegate(TipShow));
                     }
-                });
+                //});
             });
         }
 
