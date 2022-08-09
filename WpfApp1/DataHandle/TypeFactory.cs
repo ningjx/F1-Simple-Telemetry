@@ -1,35 +1,42 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace F1Tools
 {
     public class TypeFactory
     {
-        public static LocalData GetData(byte[] bytes, GameVersion version, out GameVersion outVersion)
+        public static LocalData GetData(byte[] bytes, out GameVersion outVersion)
         {
-            if (version != GameVersion.Unkonwn)
+            outVersion = GameVersion.Unkonwn;
+            try
             {
-                switch (version)
+                var ver = BitConverter.ToUInt16(bytes, 0);
+
+                switch (ver)
                 {
-                    case GameVersion.F1_2019:
-                        outVersion = F1.GetPacket2019(bytes, out Codemasters.F1_2019.Packet packet19) ? GameVersion.F1_2019 : GameVersion.Unkonwn;
-                        return packet19.AsLocalData();
-                    case GameVersion.F1_2020:
-                        outVersion = F1.GetPacket2020(bytes, out Codemasters.F1_2020.Packet packet20) ? GameVersion.F1_2020 : GameVersion.Unkonwn;
-                        return packet20.AsLocalData();
-                    case GameVersion.F1_2021:
-                        outVersion = F1.GetPacket2021(bytes, out Codemasters.F1_2021.Packet packet21) ? GameVersion.F1_2021 : GameVersion.Unkonwn;
-                        return packet21.AsLocalData();
-                    case GameVersion.Horizon5:
-                        outVersion = FH5.GetFh5Data(bytes, out float[] data) ? GameVersion.Horizon5 : GameVersion.Unkonwn;
-                        return data.AsLocalData();
+                    case 2019:
+                        outVersion = GameVersion.F1_2019;
+                        return F1.GetPacket2019(bytes).AsLocalData();
+
+                    case 2020:
+                        outVersion = GameVersion.F1_2020;
+                        return F1.GetPacket2020(bytes).AsLocalData();
+
+                    case 2021:
+                        outVersion = GameVersion.F1_2021;
+                        return F1.GetPacket2021(bytes).AsLocalData();
+
+                    case 2022:
+                        outVersion = GameVersion.F1_22;
+                        return F1.GetPacket2022(bytes).AsLocalData();
                     default:
-                        outVersion = GameVersion.Unkonwn;
-                        return null;
+                        outVersion = GameVersion.Horizon5;
+                        return FH5.GetFh5Data(bytes).AsLocalData();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                outVersion = Helper.GetGameVersion(bytes);
                 return null;
             }
         }

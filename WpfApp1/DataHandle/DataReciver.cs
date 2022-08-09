@@ -31,12 +31,12 @@ namespace F1Tools
             var bytes = UDP.Receive(ref FromIP);
             if (bytes.Length > 0)
             {
-                var data = GetData(bytes, _version, out _version);
+                var data = GetData(bytes, out _version);
                 if (_version == GameVersion.Unkonwn || data == null)
                     return;
                 ReciveEvent?.Invoke(data);
 #if DEBUG
-                //Console.WriteLine($"{data.Throttle} {data.Brake}");
+                Console.WriteLine($"{data.Throttle} {data.Brake}");
 #endif
             }
         }

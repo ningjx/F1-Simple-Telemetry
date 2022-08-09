@@ -1,4 +1,5 @@
-﻿using System;
+﻿using F1_Telemetry_Adapter;
+using System;
 
 namespace F1Tools
 {
@@ -85,6 +86,34 @@ namespace F1Tools
                 var data = curPack.FieldCarStatusData[0];
 
                 result.DrsAllowed = data.DrsAllowed;
+            }
+            return result;
+        }
+
+        public static LocalData AsLocalData(this F1Packet packet)
+        {
+            if (packet == null)
+                return null;
+
+            var result = new LocalData();
+            if (packet.PacketHeader._PacketType == F1_Telemetry_Adapter.Enums.PacketType.CarTelemetry)
+            {
+                var curPack = packet as F1_Telemetry_Adapter.F1_22_Packets.CarTelemetryPacket;
+                var data = curPack.CarTelemetryData[curPack.PacketHeader.PlayerCarIndex];
+
+                result.Brake = data.Brake;
+                result.Throttle = data.Throttle;
+                result.SpeedKph = data.Speed;
+                result.EngineRpm = data.EngineRPM;
+                result.Gear = data.Gear;
+                result.DrsActive = data.Drs == 1;
+            }
+            else if (packet.PacketHeader._PacketType == F1_Telemetry_Adapter.Enums.PacketType.CarStatus)
+            {
+                var curPack = packet as F1_Telemetry_Adapter.F1_22_Packets.CarStatusPacket;
+                var data = curPack.CarStatusDatas[curPack.PacketHeader.PlayerCarIndex];
+
+                result.DrsAllowed = data.DrsAllowed == 1;
             }
             return result;
         }
