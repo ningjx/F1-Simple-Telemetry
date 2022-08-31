@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter;
+﻿
+using NingSoft.F1TelemetryAdapter;
 
 namespace F1Tools
 {
@@ -126,7 +127,7 @@ namespace F1Tools
 
         public static F1Packet GetPacket2022(byte[] bytes)
         {
-            return F1Packet.GetPacket(bytes);
+            return F1Adapter.GetF1Packet(bytes);
         }
     }
 }

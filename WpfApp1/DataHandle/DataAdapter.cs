@@ -1,4 +1,6 @@
-﻿using F1_Telemetry_Adapter;
+﻿using NingSoft.F1TelemetryAdapter;
+using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.F1_22_packets;
 using System;
 
 namespace F1Tools
@@ -96,10 +98,10 @@ namespace F1Tools
                 return null;
 
             var result = new LocalData();
-            if (packet.PacketHeader._PacketType == F1_Telemetry_Adapter.Enums.PacketType.CarTelemetry)
+            if (packet.Header._PacketType == NingSoft.F1TelemetryAdapter.Enums.PacketType.CarTelemetry)
             {
-                var curPack = packet as F1_Telemetry_Adapter.F1_22_Packets.CarTelemetryPacket;
-                var data = curPack.CarTelemetryData[curPack.PacketHeader.PlayerCarIndex];
+                var curPack = packet as CarTelemetryPacket22;
+                var data = curPack.CarTelemetryData[curPack.Header.PlayerCarIndex];
 
                 result.Brake = data.Brake;
                 result.Throttle = data.Throttle;
@@ -108,10 +110,10 @@ namespace F1Tools
                 result.Gear = data.Gear;
                 result.DrsActive = data.Drs == 1;
             }
-            else if (packet.PacketHeader._PacketType == F1_Telemetry_Adapter.Enums.PacketType.CarStatus)
+            else if (packet.Header._PacketType == NingSoft.F1TelemetryAdapter.Enums.PacketType.CarStatus)
             {
-                var curPack = packet as F1_Telemetry_Adapter.F1_22_Packets.CarStatusPacket;
-                var data = curPack.CarStatusDatas[curPack.PacketHeader.PlayerCarIndex];
+                var curPack = packet as CarStatusPacket22;
+                var data = curPack.CarStatusDatas[curPack.Header.PlayerCarIndex];
 
                 result.DrsAllowed = data.DrsAllowed == 1;
             }
