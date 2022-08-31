@@ -37,6 +37,9 @@ namespace F1Tools
             }
             catch (Exception ex)
             {
+#if DEBUG
+                File.WriteAllText(@"D:\errlog.txt", string.Join(",", bytes));
+#endif
                 return null;
             }
         }
