@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:F1Tools"
+             RenderOptions.BitmapScalingMode="HighQuality"
              mc:Ignorable="d" Height="500" Width="500">
     <Grid Height="500"  Margin="0,0,0,0">
         <Grid Height="500" Width="500">
@@ -50,32 +51,32 @@
             <local:Arc x:Name="arc_tr" Width="326" Height="326" Rect="25,25,277,277" StartAngle="128" EndAngle="307" Stroke="#16d213" StrokeThickness="35" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
             <local:Arc x:Name="arc_break" Width="326" Height="326" Rect="24,24,278,278" StartAngle="410" EndAngle="311" Stroke="#d20003" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
 
-                <StackPanel Margin="5" x:Name="dr">
-                    <Path Fill="#0ae404">
-                        <Path.Data>
-                            <CombinedGeometry GeometryCombineMode="Union">
-                                <CombinedGeometry.Geometry1>
-                                    <CombinedGeometry GeometryCombineMode="Exclude">
-                                        <CombinedGeometry.Geometry1>
-                                            <EllipseGeometry Center="245 245" RadiusX="117" RadiusY="117"></EllipseGeometry>
-                                        </CombinedGeometry.Geometry1>
-                                        <CombinedGeometry.Geometry2>
-                                            <RectangleGeometry Rect="100 179 300 300" >
+            <StackPanel Margin="5" x:Name="dr">
+                <Path Fill="#0ae404">
+                    <Path.Data>
+                        <CombinedGeometry GeometryCombineMode="Union">
+                            <CombinedGeometry.Geometry1>
+                                <CombinedGeometry GeometryCombineMode="Exclude">
+                                    <CombinedGeometry.Geometry1>
+                                        <EllipseGeometry Center="245 245" RadiusX="117" RadiusY="117"></EllipseGeometry>
+                                    </CombinedGeometry.Geometry1>
+                                    <CombinedGeometry.Geometry2>
+                                        <RectangleGeometry Rect="100 179 300 300" >
 
-                                            </RectangleGeometry>
-                                        </CombinedGeometry.Geometry2>
-                                    </CombinedGeometry>
-                                </CombinedGeometry.Geometry1>
+                                        </RectangleGeometry>
+                                    </CombinedGeometry.Geometry2>
+                                </CombinedGeometry>
+                            </CombinedGeometry.Geometry1>
 
-                            </CombinedGeometry>
-                        </Path.Data>
-                    </Path>
-                </StackPanel>
-            
+                        </CombinedGeometry>
+                    </Path.Data>
+                </Path>
+            </StackPanel>
+
             <Grid Width="150" Height="50" HorizontalAlignment="Center" Margin="175,147,175,303">
                 <Label Name="lb_DRS" Content="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></Label>
             </Grid>
-            
+
             <Image Name="img_cr" Source="/Resources/cr1.png"></Image>
             <Image Name="img_lb" Source="/Resources/lable.png"/>
             <Grid Width="180" Height="80" Margin="160,281,160,139">
