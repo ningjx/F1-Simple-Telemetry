@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31613.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F1_2020_Tools", "WpfApp1\F1_2020_Tools.csproj", "{CFCC0A92-75B5-4473-9074-2E9D0906C20A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F1 Simple Telemetry", "WpfApp1\F1 Simple Telemetry.csproj", "{CFCC0A92-75B5-4473-9074-2E9D0906C20A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{0E5894D4-49C7-4168-8BB0-176135821ED0}"
 	ProjectSection(ProjectDependencies) = postProject
