@@ -1,0 +1,93 @@
+﻿<UserControl
+    x:Class="F1Tools.F1Control"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:F1Tools"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500"
+    d:DesignWidth="500"
+    >
+
+
+    <Grid Height="500"  Margin="0,0,0,0">
+        <Grid Height="500" Width="500">
+            <Image Name="img_bc" Source="/Resources/bc.png" Opacity="0.7"></Image>
+
+            <Grid Height="100" Width="240" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-50,188,-50,212">
+                <Grid  Width="600"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid Name="gear_grid" Width="600" VerticalAlignment="Center" Margin="-77,0,77,0">
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-450,0,0,0">
+                            <TextBlock Text="R" Name="lb_R" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-350,0,0,0">
+                            <TextBlock Text="N" Name="lb_N" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-250,0,0,0">
+                            <TextBlock Text="1" Name="lb_1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-150,0,0,0">
+                            <TextBlock Text="2" Name="lb_2" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-50,0,0,0">
+                            <TextBlock Text="3" Name="lb_3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="50,0,0,0">
+                            <TextBlock Text="4" Name="lb_4" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="150,0,0,0">
+                            <TextBlock Text="5" Name="lb_5" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="250,0,0,0">
+                            <TextBlock Text="6" Name="lb_6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="350,0,0,0">
+                            <TextBlock Text="7" Name="lb_7" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="450,0,0,0">
+                            <TextBlock Text="8" Name="lb_8" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Path Name="drs_bac" Height="500" Width="500" Fill="#0ae404">
+                <Path.Data>
+                    <GeometryGroup>
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <PathFigureCollection>
+                                    <PathFigure IsClosed="true" StartPoint="152,185">
+                                        <PathFigure.Segments>
+                                            <PathSegmentCollection>
+
+                                                <ArcSegment Point="347,185" Size="120,125" SweepDirection="Clockwise"></ArcSegment>
+                                            </PathSegmentCollection>
+                                        </PathFigure.Segments>
+                                    </PathFigure>
+                                </PathFigureCollection>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </GeometryGroup>
+                </Path.Data>
+            </Path>
+
+            <Path x:Name="pa_th" Fill="LightBlue"></Path>
+
+            <Grid Width="150" Height="50" HorizontalAlignment="Center" Margin="175,147,175,303">
+                <TextBlock Name="lb_DRS" Text="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></TextBlock>
+            </Grid>
+            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Name="arc_speed" Stroke="#00a2e8" StrokeThickness="34" Height="500" Width="500"/>
+            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Name="arc_th" Stroke="#16d213" StrokeThickness="34" Height="500" Width="500"/>
+            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Name="arc_br" Stroke="#d20003" StrokeThickness="34" Height="500" Width="500"/>
+            <Image Name="img_cr" Source="/Resources/cr1.png"></Image>
+            <Image Name="img_lb" Source="/Resources/lable.png"/>
+            <Grid Width="180" Height="80" Margin="160,281,160,139">
+                <TextBlock Name="lb_rpm" Text="00000" FontSize="42" HorizontalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></TextBlock>
+            </Grid>
+            <Grid Width="170" Height="90" Margin="165,353,165,57">
+                <TextBlock Name="lb_speed" Text="000" FontWeight="SemiBold" FontSize="75" HorizontalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" Margin="12,-14,16,14"></TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

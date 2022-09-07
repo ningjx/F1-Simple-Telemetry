@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WpfApp1\F1 Simple Telemetry.csproj">
+    <ProjectReference Include="..\F1 Simple Telemetry WPF\F1 Simple Telemetry WPF.csproj">
       <Project>{cfcc0a92-75b5-4473-9074-2e9d0906c20a}</Project>
-      <Name>F1 Simple Telemetry</Name>
+      <Name>F1 Simple Telemetry WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
