@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NingSoft.CSharpTools;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using static F1Tools.TypeFactory;
@@ -18,12 +19,12 @@ namespace F1Tools
         {
             ListenEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 20777);
             UDP = new UdpClient(ListenEndPoint);
-            MicroTimer = new MicroTimer(1, 1);
-            MicroTimer.OnRunningCallback += MicroTimer_OnRunningCallback;
+            MicroTimer = new MicroTimer(1, TimerMode.PERIODIC);
+            MicroTimer.OnRunning += MicroTimer_OnRunningCallback;
             MicroTimer.Start();
         }
 
-        private static void MicroTimer_OnRunningCallback(int id, int msg, int user, int param1, int param2)
+        private static void MicroTimer_OnRunningCallback(ulong ticks)
         {
             if (UDP == null || UDP.Available <= 0)
                 return;
