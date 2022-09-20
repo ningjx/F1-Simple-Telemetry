@@ -56,17 +56,11 @@
     <ApplicationIcon>f1icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codemasters.F1_2019, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Codemasters.F1_2019.0.1.2\lib\netstandard2.0\Codemasters.F1_2019.dll</HintPath>
-    </Reference>
-    <Reference Include="Codemasters.F1_2020, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Codemasters.F1_2020.4.3.3\lib\netstandard2.0\Codemasters.F1_2020.dll</HintPath>
-    </Reference>
-    <Reference Include="Codemasters.F1_2021, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Codemasters.F1_2021.0.1.3\lib\netstandard2.0\Codemasters.F1_2021.dll</HintPath>
-    </Reference>
     <Reference Include="Costura, Version=5.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.5.6.0\lib\netstandard1.0\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
@@ -79,8 +73,8 @@
     <Reference Include="NingSoft.CSharpTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NingSoft.CSharpTools.1.0.0\lib\net461\NingSoft.CSharpTools.dll</HintPath>
     </Reference>
-    <Reference Include="NingSoft.F1TelemetryAdapter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NingSoft.F1TelemetryAdapter.1.0.0\lib\net461\NingSoft.F1TelemetryAdapter.dll</HintPath>
+    <Reference Include="NingSoft.F1TelemetryAdapter, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NingSoft.F1TelemetryAdapter.1.0.2\lib\net461\NingSoft.F1TelemetryAdapter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -220,15 +214,6 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="TimHanewich.Csv, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TimHanewich.Csv.1.0.0\lib\netstandard2.0\TimHanewich.Csv.dll</HintPath>
-    </Reference>
-    <Reference Include="TimHanewich.Toolkit, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TimHanewich.Toolkit.3.3.0\lib\netstandard2.0\TimHanewich.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="TimHanewichToolkit, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TimHanewichToolkit.2.1.0\lib\netstandard2.0\TimHanewichToolkit.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -239,11 +224,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataHandle\DataAdapter.cs" />
-    <Compile Include="F1\F1.cs" />
     <Compile Include="FH5\FH5.cs" />
     <Compile Include="Helper\Arc.cs" />
     <Compile Include="DataHandle\DataReciver.cs" />
-    <Compile Include="Helper\ConsoleManager.cs" />
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="FH5\FH5Format.cs" />
     <Compile Include="Models\GameVersion.cs" />

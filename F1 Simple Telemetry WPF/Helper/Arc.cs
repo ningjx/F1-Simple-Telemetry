@@ -53,7 +53,7 @@ namespace F1Tools
         public static readonly DependencyProperty EndAngleProperty =
             DependencyProperty.Register("EndAngle", typeof(double), typeof(Arc), new PropertyMetadata(0.0, propertyChangedCallback));
 
-        protected override Geometry DefiningGeometry { get { return (Geometry)GetValue(DataProperty); } }
+        protected override Geometry DefiningGeometry => (Geometry)GetValue(DataProperty);
 
         private static void propertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

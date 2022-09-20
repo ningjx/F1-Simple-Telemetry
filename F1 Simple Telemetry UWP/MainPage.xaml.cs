@@ -28,8 +28,8 @@ namespace F1Tools
             DataReciver.ReciveEvent += DataReciver_ReciveEvent; ;
         }
 
-        private delegate void F1InstrumentDelegate(F1Control f1, object packet);
-        private void DataReciver_ReciveEvent(object packet)
+        private delegate void F1InstrumentDelegate(F1Instrument f1, LocalData packet);
+        private void DataReciver_ReciveEvent(LocalData packet)
         {
             ShowDataHandle.F1Handle(f1, packet);
             ///f1.Dispatcher.RunAsync(new F1InstrumentDelegate(ShowDataHandle.F1Handle), f1, packet);
@@ -51,13 +51,13 @@ namespace F1Tools
         private void Slider_ValueChanged_2(object sender, RangeBaseValueChangedEventArgs e)
         {
             if (rr != null && st != null && en != null && stro != null)
-                f1.SetBrake(rr.Value/100.0);
+                f1.SetBrake(rr.Value / 100.0);
         }
 
         private void stro_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             //if (rr != null && st != null && en != null && stro != null)
-                //f1.SetTh((int)rr.Value, (int)st.Value, (int)en.Value, (int)stro.Value);
+            //f1.SetTh((int)rr.Value, (int)st.Value, (int)en.Value, (int)stro.Value);
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)

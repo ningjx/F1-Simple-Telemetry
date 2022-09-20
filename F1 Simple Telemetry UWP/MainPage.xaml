@@ -12,7 +12,7 @@
     <Grid>
         <Viewbox x:Name="view_box" Width="300" Height="300" Stretch="Fill">
             <Grid Width="500" Height="500" Margin="0,0,0,0">
-                <local:F1Control x:Name="f1"></local:F1Control>
+                <local:F1Instrument x:Name="f1"></local:F1Instrument>
                 <StackPanel Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="sp_ip" Width="500" Height="200" Opacity="0.95" Orientation="Vertical" Background="White">
                     <TextBox BorderThickness="0" x:Name="lb_ip" FontFamily="SourceHanSansCN-Normal" Text="当前IP：0.0.0.0" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
                     <TextBox BorderThickness="0" x:Name="lb_port" FontFamily="SourceHanSansCN-Normal" Text="端口：20777" Foreground="Black" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>

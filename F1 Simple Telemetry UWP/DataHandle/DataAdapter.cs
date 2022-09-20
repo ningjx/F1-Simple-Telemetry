@@ -11,7 +11,6 @@ namespace F1Tools
                 return null;
 
             var result = new LocalData();
-            result.GameVersion = (GameVersion)packet.Header._GameSeries;
             if (packet.Header._PacketType == PacketType.CarTelemetry)
             {
                 var curPack = packet as dynamic;
@@ -49,7 +48,6 @@ namespace F1Tools
                 result.Gear = -1;
             else if (result.Gear == 11)
                 result.Gear = 0;
-            result.GameVersion = GameVersion.Horizon5;
             return result;
         }
     }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NingSoft.F1TelemetryAdapter;
+using System;
 using System.IO;
-using System.Linq;
 
 namespace F1Tools
 {
@@ -15,21 +15,14 @@ namespace F1Tools
 
                 switch (ver)
                 {
+                    case 2018:
                     case 2019:
-                        outVersion = GameVersion.F1_2019;
-                        return F1.GetPacket2019(bytes).AsLocalData();
-
                     case 2020:
-                        outVersion = GameVersion.F1_2020;
-                        return F1.GetPacket2020(bytes).AsLocalData();
-
                     case 2021:
-                        outVersion = GameVersion.F1_2021;
-                        return F1.GetPacket2021(bytes).AsLocalData();
-
                     case 2022:
-                        outVersion = GameVersion.F1_22;
-                        return F1.GetPacket2022(bytes).AsLocalData();
+                        outVersion = (GameVersion)ver;
+                        return F1Adapter.GetF1Packet(bytes).AsLocalData();
+
                     default:
                         outVersion = GameVersion.Horizon5;
                         return FH5.GetFh5Data(bytes).AsLocalData();

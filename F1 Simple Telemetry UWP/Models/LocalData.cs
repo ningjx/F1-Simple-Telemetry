@@ -13,6 +13,5 @@
         public float? SpeedKph;
         public float? EngineRpm;
         public int? Gear;
-        public GameVersion? GameVersion;
     }
 }

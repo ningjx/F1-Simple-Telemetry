@@ -1,8 +1,7 @@
-﻿using NingSoft.CSharpTools;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
-using static F1Tools.TypeFactory;
+using System.Threading;
 
 namespace F1Tools
 {
@@ -11,34 +10,28 @@ namespace F1Tools
         private static UdpClient UDP;
         private static IPEndPoint FromIP;
         private static IPEndPoint ListenEndPoint;
-        public static MicroTimer MicroTimer;
-        //private static int _port = 20777;
         private static GameVersion _version = GameVersion.Unkonwn;
+        private static Thread UDPThread;
 
         static DataReciver()
         {
             ListenEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 20777);
             UDP = new UdpClient(ListenEndPoint);
-            MicroTimer = new MicroTimer(1, TimerMode.PERIODIC);
-            MicroTimer.OnRunning += MicroTimer_OnRunningCallback;
-            MicroTimer.Start();
+            RestartTask();
         }
 
-        private static void MicroTimer_OnRunningCallback(ulong ticks)
+        private static void UDPReceive()
         {
-            if (UDP == null || UDP.Available <= 0)
-                return;
-
-            var bytes = UDP.Receive(ref FromIP);
-            if (bytes.Length > 0)
+            while (true)
             {
-                var data = GetData(bytes, out _version);
-                if (_version == GameVersion.Unkonwn || data == null)
-                    return;
-                ReciveEvent?.Invoke(data);
-#if DEBUG
-                Console.WriteLine($"{data.Throttle} {data.Brake}");
-#endif
+                var bytes = UDP.Receive(ref FromIP);
+                if (bytes.Length > 0)
+                {
+                    var data = TypeFactory.GetData(bytes, out _version);
+                    if (_version == GameVersion.Unkonwn || data == null)
+                        return;
+                    ReciveEvent?.Invoke(data);
+                }
             }
         }
 
@@ -47,26 +40,41 @@ namespace F1Tools
             get => ListenEndPoint.Port;
             set
             {
-                if (value < 1 || value > 65536)
+                if (value < IPEndPoint.MinPort || value > IPEndPoint.MaxPort)
                     return;
 
                 if (ListenEndPoint.Port == value)
                     return;
 
                 ListenEndPoint.Port = value;
+
+                DisposeTask();
                 UDP.Dispose();
+
                 UDP = new UdpClient(ListenEndPoint);
+                RestartTask();
 #if DEBUG
                 Console.WriteLine($"端口已修改为{value}");
 #endif
             }
         }
 
+        private static void RestartTask()
+        {
+            UDPThread = new Thread(UDPReceive);
+            UDPThread.Start();
+        }
+
+        private static void DisposeTask()
+        {
+            UDPThread.Abort();
+        }
+
         public static GameVersion Version => _version;
 
         public static void Dispose()
         {
-            MicroTimer.Stop();
+            UDPThread.Abort();
             UDP.Close();
             UDP.Dispose();
         }

@@ -1,26 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 
 //https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
 
 namespace F1Tools
 {
-    public sealed partial class F1Control : UserControl
+    public sealed partial class F1Instrument : UserControl
     {
         private int Gear;
         private bool DRS_On = true;
@@ -98,7 +86,7 @@ namespace F1Tools
         };
 
 
-        public F1Control()
+        public F1Instrument()
         {
             this.InitializeComponent();
 
@@ -113,14 +101,14 @@ namespace F1Tools
             SizeBigStory.Children.Add(SizeBig);
             Storyboard.SetTargetProperty(SizeBig, "FontSize");
             //Storyboard.SetTarget(sizeBigAn, drs_bac); 
-            
+
             SizeSmallStory.Children.Add(SizeSmall);
             Storyboard.SetTargetProperty(SizeSmall, "FontSize");
             //Storyboard.SetTarget(sizeSmln, drs_bac);
-            
+
             GearInStory.Children.Add(GearIn);
             Storyboard.SetTargetProperty(GearIn, "(Border.Foreground).(SolidColorBrush.Color)");
-            
+
             GearOutStory.Children.Add(GearOut);
             Storyboard.SetTargetProperty(GearOut, "(Border.Foreground).(SolidColorBrush.Color)");
 
@@ -306,7 +294,7 @@ namespace F1Tools
                     GearInStory.Begin();
                     break;
                 case 0:
-                   
+
                     Storyboard.SetTarget(GearIn, lb_N);
                     GearInStory.Begin();
                     Storyboard.SetTarget(SizeBig, lb_N);

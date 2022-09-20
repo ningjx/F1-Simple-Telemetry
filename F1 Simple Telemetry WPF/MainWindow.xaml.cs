@@ -1,14 +1,6 @@
-﻿using Codemasters.F1_2019;
-using Codemasters.F1_2020;
-using Codemasters.F1_2021;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using static F1Tools.TypeFactory;
 using Timer = System.Timers.Timer;
 
 namespace F1Tools
@@ -47,6 +39,9 @@ namespace F1Tools
                 }
                 //});
             });
+#if DEBUG
+            this.Debug_Version.Visibility = Visibility.Visible;
+#endif
         }
 
         private delegate void WindowDelegate();
@@ -76,6 +71,9 @@ namespace F1Tools
 
         private void DataReciver_ReciveEvent(LocalData packet)
         {
+#if DEBUG
+            f1.Dispatcher.Invoke(() => { this.Debug_Version.Content = packet.GameVersion.ToString(); });
+#endif
             f1.Dispatcher.Invoke(new F1InstrumentDelegate(ShowDataHandle.F1Handle), f1, packet);
             if (sp_ip.Visibility != Visibility.Hidden)
                 Dispatcher.Invoke(new WindowDelegate(HideIP));
@@ -110,7 +108,7 @@ namespace F1Tools
 
         private void Window_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
-            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            if (Keyboard.IsKeyDown(Key.LeftCtrl | Key.RightCtrl))
             {
                 if (e.Delta > 0)
                 {
@@ -149,7 +147,7 @@ namespace F1Tools
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://gitee.com/n-i-n-g/F1-2020-Telemetering-Tools/releases");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/ningjx/F1-Simple-Telemetry/releases");
         }
 
         private void port_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
