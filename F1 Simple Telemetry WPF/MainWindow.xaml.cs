@@ -108,7 +108,7 @@ namespace F1Tools
 
         private void Window_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
-            if (Keyboard.IsKeyDown(Key.LeftCtrl | Key.RightCtrl))
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 if (e.Delta > 0)
                 {
