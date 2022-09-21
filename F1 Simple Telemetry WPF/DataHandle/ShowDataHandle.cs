@@ -1,4 +1,6 @@
-﻿namespace F1Tools
+﻿using F1Tools.Models;
+
+namespace F1Tools
 {
     public static class ShowDataHandle
     {
@@ -12,8 +14,8 @@
                 f1.SetThrottle(data.Throttle.Value);
             if (data.SpeedKph.HasValue)
                 f1.SetSpeed((int)data.SpeedKph.Value);
-            if (data.EngineRpm.HasValue)
-                f1.SetRPM((int)data.EngineRpm.Value);
+            //if (data.EngineRpm.HasValue)
+            //f1.SetRPM((int)data.EngineRpm.Value);
             if (data.Gear.HasValue)
                 f1.SetGear(data.Gear.Value);
             if (data.DrsActive.HasValue)

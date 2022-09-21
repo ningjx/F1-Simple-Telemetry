@@ -4,54 +4,79 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:F1Tools"
+             xmlns:a="clr-namespace:F1Tools.Models"
              RenderOptions.BitmapScalingMode="HighQuality"
              mc:Ignorable="d" Height="500" Width="500">
-    <Grid Height="500"  Margin="0,0,0,0">
-        <Grid Height="500" Width="500">
-            <Image Name="img_bc" Source="/Resources/bc.png" Opacity="0.7"></Image>
 
+    <Grid Height="500"  Margin="0,0,0,0">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="50"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontFamily" Value="SourceHanSansCN-Normal"></Setter>
+            </Style>
+            <!--<a:LocalData x:Key="localData"></a:LocalData>-->
+        </Grid.Resources>
+        <!--<Grid.DataContext>
+            <Binding Source="{StaticResource localData}"></Binding>
+        </Grid.DataContext>-->
+
+        <Grid Height="500" Width="500">
+            <!--背景图片-->
+            <Image Name="img_bc" Source="/Resources/bc.png" Opacity="0.7"></Image>
+            <!--档位显示-->
             <Grid Height="100" Width="240" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-50,188,-50,212">
                 <Grid  Width="600"  HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid Name="gear_grid" Width="600" VerticalAlignment="Center" Margin="-77,0,77,0">
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-450,0,0,0">
-                            <Label Content="R" Name="lb_R" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="Height" Value="150"></Setter>
+                                <Setter Property="Width" Value="80"></Setter>
+                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid Margin="-450,0,0,0">
+                            <Label Content="R" Name="lb_R"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-350,0,0,0">
-                            <Label Content="N" Name="lb_N" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="-350,0,0,0">
+                            <Label Content="N" Name="lb_N"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-250,0,0,0">
-                            <Label Content="1" Name="lb_1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="-250,0,0,0">
+                            <Label Content="1" Name="lb_1"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-150,0,0,0">
-                            <Label Content="2" Name="lb_2" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="-150,0,0,0">
+                            <Label Content="2" Name="lb_2"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="-50,0,0,0">
-                            <Label Content="3" Name="lb_3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="-50,0,0,0">
+                            <Label Content="3" Name="lb_3"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="50,0,0,0">
-                            <Label Content="4" Name="lb_4" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="50,0,0,0">
+                            <Label Content="4" Name="lb_4"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="150,0,0,0">
-                            <Label Content="5" Name="lb_5" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="150,0,0,0">
+                            <Label Content="5" Name="lb_5"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="250,0,0,0">
-                            <Label Content="6" Name="lb_6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="250,0,0,0">
+                            <Label Content="6" Name="lb_6"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="350,0,0,0">
-                            <Label Content="7" Name="lb_7" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="350,0,0,0">
+                            <Label Content="7" Name="lb_7"/>
                         </Grid>
-                        <Grid Height="150" Width="80" VerticalAlignment="Center" Margin="450,0,0,0">
-                            <Label Content="8" Name="lb_8" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="SourceHanSansCN-Normal" FontSize="50"/>
+                        <Grid Margin="450,0,0,0">
+                            <Label Content="8" Name="lb_8"/>
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-
+            <!--速度、油门、刹车绘制-->
             <local:Arc x:Name="arc_speed" Width="394" Height="394" Rect="17,17,360,360" StartAngle="120" EndAngle="421" Stroke="#00a2e8" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
-            <local:Arc x:Name="arc_tr" Width="326" Height="326" Rect="25,25,277,277" StartAngle="128" EndAngle="307" Stroke="#16d213" StrokeThickness="35" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
+            <local:Arc x:Name="arc_throttle" Width="326" Height="326" Rect="25,25,277,277" StartAngle="128" EndAngle="307" Stroke="#16d213" StrokeThickness="35" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
             <local:Arc x:Name="arc_break" Width="326" Height="326" Rect="24,24,278,278" StartAngle="410" EndAngle="311" Stroke="#d20003" StrokeThickness="34" StrokeDashArray="1,0" HorizontalAlignment="Center" VerticalAlignment="Center"></local:Arc>
-
-            <StackPanel Margin="5" x:Name="dr">
+            <!--DRS背景-->
+            <StackPanel Margin="5" x:Name="drs_background">
                 <Path Fill="#0ae404">
                     <Path.Data>
                         <CombinedGeometry GeometryCombineMode="Union">
@@ -72,18 +97,21 @@
                     </Path.Data>
                 </Path>
             </StackPanel>
-
+            <!--DRS文字-->
             <Grid Width="150" Height="50" HorizontalAlignment="Center" Margin="175,147,175,303">
-                <Label Name="lb_DRS" Content="DRS" FontSize="35" HorizontalAlignment="Center" Foreground="Orange" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></Label>
+                <Label Name="lb_DRS" Content="DRS" FontSize="35" Foreground="Orange" Margin="14,-10,14,10"></Label>
             </Grid>
-
-            <Image Name="img_cr" Source="/Resources/cr1.png"></Image>
+            <!--边框图片-->
+            <Image Name="img_cr" Source="/Resources/cr1.png"/>
+            <!--静态文字图片-->
             <Image Name="img_lb" Source="/Resources/lable.png"/>
+            <!--转速-->
             <Grid Width="180" Height="80" Margin="160,281,160,139">
-                <Label Name="lb_rpm" Content="00000" FontSize="42" HorizontalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" Margin="14,-10,14,10"></Label>
+                <Label Name="lb_rpm" Content="00000" FontSize="42" Margin="14,-10,14,10"></Label>
             </Grid>
+            <!--速度数字-->
             <Grid Width="170" Height="90" Margin="165,353,165,57">
-                <Label Name="lb_speed" Content="000" FontWeight="SemiBold" FontSize="75" HorizontalAlignment="Center" Foreground="White" FontFamily="SourceHanSansCN-Normal" Margin="12,-14,16,14"></Label>
+                <Label Name="lb_speed" Content="000" FontWeight="SemiBold" FontSize="75" Margin="12,-14,16,14"></Label>
             </Grid>
         </Grid>
     </Grid>

@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using F1Tools.Models;
+using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using Timer = System.Timers.Timer;

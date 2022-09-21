@@ -1,4 +1,5 @@
-﻿using NingSoft.F1TelemetryAdapter;
+﻿using F1Tools.Models;
+using NingSoft.F1TelemetryAdapter;
 using System;
 using System.IO;
 

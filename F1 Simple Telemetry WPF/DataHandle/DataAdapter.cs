@@ -1,4 +1,5 @@
-﻿using NingSoft.F1TelemetryAdapter;
+﻿using F1Tools.Models;
+using NingSoft.F1TelemetryAdapter;
 using NingSoft.F1TelemetryAdapter.Enums;
 
 namespace F1Tools

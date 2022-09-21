@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace F1Tools
 {
@@ -113,7 +102,7 @@ namespace F1Tools
         {
             thr = thr < 0 ? 0 : thr;
             thr = thr > 1 ? 1 : thr;
-            arc_tr.EndAngle = 128 + ((307 - 128) * thr);
+            arc_throttle.EndAngle = 128 + ((307 - 128) * thr);
         }
 
         public void SetBrake(float bre)
@@ -149,9 +138,9 @@ namespace F1Tools
             if (DRS_On != drs)
             {
                 if (drs)
-                    dr.BeginAnimation(OpacityProperty, DrsShowAc);
+                    drs_background.BeginAnimation(OpacityProperty, DrsShowAc);
                 else
-                    dr.BeginAnimation(OpacityProperty, DrsHiddenAc);
+                    drs_background.BeginAnimation(OpacityProperty, DrsHiddenAc);
                 DRS_On = drs;
             }
         }

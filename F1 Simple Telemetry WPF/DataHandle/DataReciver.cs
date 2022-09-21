@@ -1,4 +1,5 @@
-﻿using System;
+﻿using F1Tools.Models;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;

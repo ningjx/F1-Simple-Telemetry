@@ -1,4 +1,4 @@
-﻿namespace F1Tools
+﻿namespace F1Tools.Models
 {
     public class LocalData
     {
